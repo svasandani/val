@@ -23,6 +23,7 @@
 
 .recent {
     margin-top: 0;
+    padding-top: 100px;
 }
 
 .artist-statement {
@@ -153,6 +154,11 @@
 
     .work-card::after {
         width: 0px;
+    }
+
+    .work-description {
+        background: var(--text-color);
+        opacity: 0.8;
     }
 
     .artist-statement {

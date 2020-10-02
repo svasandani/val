@@ -174,3 +174,27 @@ section {
         font-size: 1rem;
     }
 }
+
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+    width: 25px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--text-color);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--theme-color);
+    border-left: 1px solid var(--text-color);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-color);
+    border-left: 1px solid var(--text-color);
+  }
