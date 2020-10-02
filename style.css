@@ -1,0 +1,168 @@
+#landing {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    padding-top: 75px;
+}
+
+#landing .scribble {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    object-fit: cover;
+    stroke: var(--text-color);
+    pointer-events: none;
+}
+
+#landing h1 {
+    margin-top: 11vh;
+    margin-left: 25px;
+}
+
+.recent {
+    margin-top: 0;
+}
+
+.artist-statement {
+    margin-top: 15vh;
+    margin-left: 55%;
+    width: 42%;
+}
+
+.scroll-btn-container {
+    padding: 0 35px;
+    display: block;
+    position: absolute;
+    bottom: 15vh;
+    left: 15vw;
+    height: 10vh;
+    width: 71px;
+}
+
+.scroll-btn {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: var(--text-color);
+}
+
+.scroll-btn::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    bottom: 9px;
+    transform: rotate(-45deg);
+    width: 25px;
+    height: 1px;
+    background: var(--text-color);
+}
+
+.scroll-btn::before {
+    content: '';
+    position: absolute;
+    right: -3px;
+    bottom: 9px;
+    transform: rotate(45deg);
+    width: 25px;
+    height: 1px;
+    background: var(--text-color);
+}
+
+.work-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 25px;
+    margin-top: 25px;
+}
+
+.work-card {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    transition: 1s ease-out;
+}
+
+.work-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.work-card::after {
+    content: '';
+    background: var(--inv-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    transition: 0.8s ease-out;
+}
+
+.work-card:hover {
+    cursor: pointer;
+    /* padding: 75px; */
+    transition: 1s ease-out;
+}
+
+.work-card:hover::after {
+    width: 0%;
+    transition: 0.8s ease-out;
+}
+
+.work-card:hover .work-description {
+    left: 0px;
+    bottom: 0px;
+    opacity: 0;
+    transition: 0.4s ease-out;
+}
+
+.work-description {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 99;
+    padding: 25px;
+    color: var(--theme-color);
+    transition: 0.4s ease-out;
+    overflow: hidden;
+}
+
+.work-description h3 {
+    margin-bottom: 0.8rem;
+}
+
+@media (max-width: 1000px) {
+    #landing {
+        height: auto;
+        padding-bottom: 15vh;
+    }
+
+    #landing h1 {
+        margin-left: 0px;
+    }
+
+    .work-carousel {
+        grid-template-columns: 1fr;
+    }
+
+    .work-card::after {
+        width: 0px;
+    }
+
+    .artist-statement {
+        margin-left: 0px;
+        width: 100%;
+        margin-top: 10vh;
+        font-size: 1.7em;
+    }
+
+    .scroll-btn {
+        display: none;
+    }
+}
