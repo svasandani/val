@@ -39,6 +39,16 @@ h2 {
     letter-spacing: -0.6rem;
 }
 
+h2.unchanged {
+    transform: translateY(35px);
+    transition: 0.4s ease-out;
+}
+
+h2.changed {
+    transform: translateY(0px);
+    transition: 0.4s ease-out;
+}
+
 h3 {
     font-style: italic;
     font-size: 2.8em;
@@ -131,10 +141,12 @@ nav a {
     font-size: 1.4em;
     text-decoration: none;
     font-family: "Lexend";
-    color: var(--text-color);
+    color: var(--theme-color);
     position: relative;
-    filter: invert();
-    backdrop-filter: invert();
+    background: #00000000;
+    -webkit-text-stroke: 1px var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 nav a::after {

@@ -79,6 +79,14 @@
     margin-top: 25px;
 }
 
+.work-card.unchanged {
+    width: 35%;
+}
+
+.work-card.changed {
+    width: 100%;
+}
+
 .work-card {
     width: 100%;
     height: 500px;
