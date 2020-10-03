@@ -197,11 +197,11 @@
     
     .slide-up p.unslided {
         transform: translateY(2em);
-        transition: 0.4s ease-out;
+        transition: 0.8s ease-out;
     }
     
     .slide-up p.slided {
         transform: none;
-        transition: 0.4s ease-out;
+        transition: 0.8s ease-out;
     }
 }
