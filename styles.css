@@ -91,6 +91,16 @@ p {
     height: 25px;
 }
 
+img.unloaded {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+img.loaded {
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+}
+
 @media (max-width: 1000px) {
     h1 {
         font-size: 15vw;
@@ -119,6 +129,7 @@ header {
     height: 75px;
     z-index: 1000;
     position: fixed;
+    top: 25px;
     width: calc(100% - 50px);
     backdrop-filter: invert();
 }
@@ -177,7 +188,6 @@ header, section {
 }
 
 section {
-    margin-top: 25px;
     padding: 25px;
 }
 

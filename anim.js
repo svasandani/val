@@ -6,8 +6,6 @@ var scroll = window.requestAnimationFrame || function(callback){ window.setTimeo
 
 let changer = document.querySelectorAll(".changer");
 
-let toAnim = Array.from(document.querySelectorAll(".unchanged"));
-
 changer.forEach((c) => {
     c.addEventListener("mouseover", () => {
         cursor.classList.add("changed");
@@ -15,6 +13,17 @@ changer.forEach((c) => {
     
     c.addEventListener("mouseout", () => {
         if (cursor.classList.contains("changed")) { cursor.classList.remove("changed"); }
+    })
+});
+
+let toAnim = Array.from(document.querySelectorAll(".unchanged"));
+
+let toLoad = document.querySelectorAll("img.unloaded");
+
+toLoad.forEach((t) => {
+    t.addEventListener('load', () => {
+        if (t.classList.contains("unloaded")) { t.classList.remove("unloaded"); }
+        t.classList.add("loaded");
     })
 });
 
