@@ -72,6 +72,7 @@ p {
     top: 0px;
     z-index: 1001;
     backdrop-filter: invert();
+    -webkit-backdrop-filter: invert();
     background: none;
     transition: 0.2s ease-out;
     transition-property: width, height, margin-left, margin-top;
@@ -132,6 +133,7 @@ header {
     top: 25px;
     width: calc(100% - 50px);
     backdrop-filter: invert();
+    -webkit-backdrop-filter: invert();
 }
 
 nav {

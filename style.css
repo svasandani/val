@@ -160,6 +160,10 @@
         grid-template-columns: 1fr;
     }
 
+    .work-card.unchanged {
+        width: 100%;
+    }
+
     .work-card::after {
         width: 0px;
     }

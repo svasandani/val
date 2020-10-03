@@ -20,11 +20,15 @@ let toAnim = Array.from(document.querySelectorAll(".unchanged"));
 
 let toLoad = document.querySelectorAll("img.unloaded");
 
+const show = (t) => {
+    if (t.classList.contains("unloaded")) { t.classList.remove("unloaded"); }
+    t.classList.add("loaded");
+};
+
 toLoad.forEach((t) => {
-    t.addEventListener('load', () => {
-        if (t.classList.contains("unloaded")) { t.classList.remove("unloaded"); }
-        t.classList.add("loaded");
-    })
+    t.addEventListener('load', () => { show(t); })
+
+    setTimeout(() => { show(t); }, 10000);
 });
 
 let mouseX = 0;
