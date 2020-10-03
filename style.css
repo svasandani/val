@@ -1,3 +1,5 @@
+
+
 #landing {
     position: relative;
     overflow: hidden;
@@ -16,9 +18,13 @@
     pointer-events: none;
 }
 
-#landing h1 {
+.landing-h1 {
     margin-top: 11vh;
     margin-left: 25px;
+}
+
+.landing-h1.no-margin {
+    margin-top: 0;
 }
 
 .recent {
@@ -80,11 +86,11 @@
 }
 
 .work-card.unchanged {
-    width: 35%;
+    transform: translateY(100%);
 }
 
 .work-card.changed {
-    width: 100%;
+    transform: none;
 }
 
 .work-card {

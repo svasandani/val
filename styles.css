@@ -40,7 +40,7 @@ h2 {
 }
 
 h2.unchanged {
-    transform: translateY(35px);
+    transform: translateY(1em);
     transition: 0.4s ease-out;
 }
 
@@ -205,21 +205,64 @@ section {
 /* width */
 ::-webkit-scrollbar {
     width: 25px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: var(--text-color);
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--theme-color);
     border-left: 1px solid var(--text-color);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: var(--theme-color);
     border-left: 1px solid var(--text-color);
-  }
+}
+
+/* ANIM */
+  
+.slide-up {
+    overflow: hidden;
+}
+
+.slide-up *.unslided {
+    transform: translateY(1em);
+    transition: 0.4s ease-out;
+}
+
+.slide-up *.slided {
+    transform: none;
+    transition: 0.4s ease-out;
+}
+
+/* PRELOADER */
+
+body.unloaded {
+    overflow: hidden;
+}
+
+body.loaded {
+    overflow: auto;
+}
+
+.preloader {
+    width: 300vw;
+    height: 200vh;
+    transform: rotate(35deg);
+    background: var(--text-color);
+    z-index: 1010;
+    position: fixed;
+    top: -50vh;
+    left: -120vw;
+    opacity: 1;
+}
+
+.preloader.loaded {
+    transform: rotate(35deg) translateX(20%) translateY(-120%);
+    transition: 0.8s ease-out;
+}
