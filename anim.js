@@ -28,7 +28,7 @@ const show = (t) => {
 toLoad.forEach((t) => {
     t.addEventListener('load', () => { show(t); })
 
-    setTimeout(() => { show(t); }, 10000);
+    setTimeout(() => { show(t); }, 2000);
 });
 
 let mouseX = 0;
