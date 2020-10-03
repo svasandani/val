@@ -33,7 +33,7 @@
 }
 
 .artist-statement {
-    margin-top: 15vh;
+    margin-top: 10vh;
     margin-left: 55%;
     width: 42%;
 }
@@ -158,7 +158,11 @@
         padding-bottom: 15vh;
     }
 
-    #landing h1 {
+    .landing-h1 {
+        margin-left: 0px;
+    }
+
+    .landing-h1 h1 {
         margin-left: 0px;
     }
 
@@ -168,6 +172,7 @@
 
     .work-card.unchanged {
         width: 100%;
+        transform: none;
     }
 
     .work-card::after {
@@ -183,10 +188,20 @@
         margin-left: 0px;
         width: 100%;
         margin-top: 10vh;
-        font-size: 1.7em;
+        font-size: 1.2em;
     }
 
     .scroll-btn {
         display: none;
+    }
+    
+    .slide-up p.unslided {
+        transform: translateY(2em);
+        transition: 0.4s ease-out;
+    }
+    
+    .slide-up p.slided {
+        transform: none;
+        transition: 0.4s ease-out;
     }
 }

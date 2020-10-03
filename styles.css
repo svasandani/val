@@ -232,12 +232,12 @@ section {
 
 .slide-up *.unslided {
     transform: translateY(1em);
-    transition: 0.4s ease-out;
+    transition: 0.8s ease-out;
 }
 
 .slide-up *.slided {
     transform: none;
-    transition: 0.4s ease-out;
+    transition: 0.8s ease-out;
 }
 
 /* PRELOADER */
@@ -252,17 +252,17 @@ body.loaded {
 
 .preloader {
     width: 300vw;
-    height: 200vh;
+    height: 300vh;
     transform: rotate(35deg);
     background: var(--text-color);
     z-index: 1010;
     position: fixed;
-    top: -50vh;
+    top: -120vh;
     left: -120vw;
     opacity: 1;
 }
 
 .preloader.loaded {
     transform: rotate(35deg) translateX(20%) translateY(-120%);
-    transition: 0.8s ease-out;
+    transition: 1.8s ease-out;
 }
