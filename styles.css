@@ -166,7 +166,7 @@ nav a::after {
     content: '';
     height: 4px;
     position: absolute;
-    bottom: -3px;
+    bottom: -5px;
     left: 50%;
     width: 0px;
     background: var(--theme-color);
