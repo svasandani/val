@@ -164,12 +164,13 @@ nav a {
 
 nav a::after {
     content: '';
-    height: 2px;
+    height: 4px;
     position: absolute;
     bottom: -3px;
     left: 50%;
     width: 0px;
-    background: var(--text-color);
+    background: var(--theme-color);
+    border-bottom: 2px solid var(--text-color);
     transition: 0.4s ease-out;
 }
 
