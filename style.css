@@ -293,7 +293,7 @@ button:hover {
 
 @media (max-width: 1000px) {
     textarea {
-        height: calc(100vh - 401px - 7.6rem);
+        height: 4em;
     }
 
     aside#contact {
