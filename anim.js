@@ -1,17 +1,28 @@
 let cursor = document.querySelector(".cursor");
+let cursordot = document.querySelector(".cursor-dot");
 
 let haswork = true;
 
 var scroll = window.requestAnimationFrame || function(callback){ window.setTimeout(callback, 1000/60)};
 
+let centerchanger = null;
 let changer = document.querySelectorAll(".changer");
+let lerpf = 0.25;
 
 changer.forEach((c) => {
     c.addEventListener("mouseover", () => {
+        if (c.classList.contains("center-changer")) {
+            centerchanger = c;
+        }
+
         cursor.classList.add("changed");
     })
     
     c.addEventListener("mouseout", () => {
+        if (c.classList.contains("center-changer")) {
+            centerchanger = null;
+        }
+
         if (cursor.classList.contains("changed")) { cursor.classList.remove("changed"); }
     })
 });
@@ -31,12 +42,24 @@ toLoad.forEach((t) => {
     setTimeout(() => { show(t); }, 2000);
 });
 
+let oldmousex = 0;
+let oldmousey = 0;
 let mouseX = 0;
 let mouseY = 0;
 
+let dotX = 0;
+let dotY = 0;
+
 window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    dotX = e.clientX;
+    dotY = e.clientY;
+    if (centerchanger == null) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    } else {
+      mouseX = centerchanger.getBoundingClientRect().left + (centerchanger.clientWidth / 2);
+      mouseY = centerchanger.getBoundingClientRect().top + (centerchanger.clientHeight / 2);
+    }
 });
 
 function loop() {
@@ -57,14 +80,24 @@ function loop() {
     });
 
     if (screen.width > 1000) {
-        cursor.style.left = mouseX + "px";
-        cursor.style.top = mouseY + "px";
+        console.log(oldmousex, mouseX, lerp(oldmousex, mouseX, 0.002));
+        cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
+        cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
+        oldmousex = lerp(oldmousex, mouseX, lerpf);
+        oldmousey = lerp(oldmousey, mouseY, lerpf);
+        
+        cursordot.style.left = dotX + "px";
+        cursordot.style.top = dotY + "px";
     }
 
     scroll(loop);
 }
 
 loop();
+
+function lerp(o, n, f) {
+    return Math.floor((1 - f) * o + f * n);
+}
 
 // Helper function from: http://stackoverflow.com/a/7557433/274826
 function isElementInViewport(el) {
