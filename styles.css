@@ -249,7 +249,7 @@ section {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--theme-color);
-    border-left: 1px solid var(--text-color);
+    border: 1px solid var(--text-color);
 }
 
 /* Handle on hover */
