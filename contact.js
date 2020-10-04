@@ -28,7 +28,7 @@ contactbtn.addEventListener('click', () => {
     }
 });
 
-window.addEventListener('scroll', hideContact);
+if (window.innerWidth > 1000) { window.addEventListener('scroll', hideContact); }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
