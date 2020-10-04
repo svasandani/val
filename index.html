@@ -16,7 +16,7 @@
         <nav>
             <div><a href="#top" class="changer center-changer">V</a></div>
             <div><a href="work" class="changer center-changer">WORK</a></div>
-            <div><a href="mailto:vsh229@nyu.edu" class="changer center-changer">CONTACT</a></div>
+            <div><a class="changer center-changer contact-btn">CONTACT</a></div>
         </nav>
     </header>
     <main>
@@ -107,10 +107,24 @@
             </div>
         </section>
     </main>
+    <aside id="contact">
+        <div class="form-container">
+            <h2>Say hi!</h2>
+            <p class="ending">Thanks for reaching out!</p>
+            <form>
+                <label for="name">What's your name?</label>
+                <input id="name" required />
+                <label for="msg">Type your message here:</label>
+                <textarea id="msg" required></textarea>
+                <button class="submit-btn changer unchanged">Email me</button>
+            </form>
+        </div>
+    </aside>
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
     <div class="preloader"></div>
 </body>
 <script src="preloader.js"></script>
+<script src="contact.js"></script>
 <script src="anim.js"></script>
 </html>

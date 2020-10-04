@@ -80,7 +80,6 @@ function loop() {
     });
 
     if (screen.width > 1000) {
-        console.log(oldmousex, mouseX, lerp(oldmousex, mouseX, 0.002));
         cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
         cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
         oldmousex = lerp(oldmousex, mouseX, lerpf);

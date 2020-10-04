@@ -205,3 +205,106 @@
         transition: 0.8s ease-out;
     }
 }
+
+aside#contact {
+    position: fixed;
+    top: 99px;
+    height: calc(100vh - 125px);
+    left: -100vw;
+    width: calc(100% - 50px);
+    z-index: 999;
+    transition: 0.6s ease-out;
+
+    padding: 25px;
+    background: var(--theme-color);
+    border: 1px solid var(--text-color);
+}
+
+aside#contact.show {
+    left: 25px;
+    transition: 0.6s ease-out;
+}
+
+aside#contact form {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 25px;
+    transition: 0.4s ease-out;
+}
+
+aside#contact .ending {
+    position: absolute;
+    top: calc(50px + 3.6rem);
+    transition: 0.4s ease-out;
+    opacity: 0;
+}
+
+aside#contact .ending.finished {
+    position: absolute;
+    top: calc(50px + 3.6rem);
+    transition: 0.4s ease-out;
+    opacity: 1;
+}
+
+input, textarea {
+    background: none;
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 2em;
+    font-family: 'Lexend';
+    width: 35%;
+    margin-bottom: 50px;
+    margin-top: 25px;
+    height: 2em;
+    letter-spacing: -0.2em;
+    border-bottom: 1px solid var(--text-color);
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--text-color);
+    box-shadow: 0 0 0px 1000px var(--theme-color) inset;
+}
+
+textarea {
+    height: calc(100vh - 411px - 7.6rem);
+    resize: none;
+    margin-bottom: 0;
+}
+
+button {
+    height: 50px;
+    background: none;
+    outline: none;
+    border: 1px solid var(--text-color);
+    width: 35%;
+    margin: 25px 0;
+    color: var(--text-color);
+    font-size: 1.1em;
+    transition: 0.4s ease-out;
+    font-family: "Epilogue";
+}
+
+button:hover {
+    background: var(--text-color);
+    color: var(--theme-color);
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    textarea {
+        height: calc(100vh - 401px - 7.6rem);
+    }
+
+    aside#contact {
+        transition: 0.3s ease-out;
+    }
+    
+    input, textarea, button {
+        width: 100%;
+    }
+
+    aside#contact .ending.finished {
+        top: calc(50px + 2.9rem);
+    }
+}
