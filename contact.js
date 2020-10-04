@@ -2,6 +2,8 @@ let contact = document.querySelector("aside#contact");
 
 let form = contact.querySelector("form");
 
+let fd = new FormData();
+
 let contactbtn = document.querySelector(".contact-btn");
 
 let ending = contact.querySelector(".ending");
@@ -31,9 +33,17 @@ window.addEventListener('scroll', hideContact);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    fd.append("email", form.querySelector("#email").value);
+    fd.append("msg", form.querySelector("#msg").value);
+
+    fetch('https://script.google.com/macros/s/AKfycbz6tMsCM6sBDRqmXmzOcNKn_smhZR-CcN1F323xn36ISDJ8OWgL/exec', {
+        method: 'POST',
+        body: fd,
+    })
+    
     setTimeout(hideContact, 2000);
 
     form.style.opacity = 0;
 
-    setTimeout(() => { ending.classList.add("finished"); }, 600)
+    setTimeout(() => { ending.classList.add("finished"); }, 600);
 })

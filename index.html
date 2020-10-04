@@ -111,11 +111,11 @@
         <div class="form-container">
             <h2>Say hi!</h2>
             <p class="ending">Thanks for reaching out!</p>
-            <form>
-                <label for="name">What's your name?</label>
-                <input id="name" required />
+            <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbwt7S99UmGt4vOWMyZUjSaqyVTFpgDHc3I2YsQO0w/exec">
+                <label for="email">What's your email?</label>
+                <input id="email" name="email" type="email" required />
                 <label for="msg">Type your message here:</label>
-                <textarea id="msg" required></textarea>
+                <textarea id="msg" name="msg" required></textarea>
                 <button class="submit-btn changer unchanged">Email me</button>
             </form>
         </div>
