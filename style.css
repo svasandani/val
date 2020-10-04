@@ -86,7 +86,7 @@
 }
 
 .work-card.unchanged {
-    transform: translateY(100%);
+    transform: translateX(-100%);
 }
 
 .work-card.changed {
