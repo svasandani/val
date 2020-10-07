@@ -8,7 +8,49 @@ var scroll = window.requestAnimationFrame || function(callback){ window.setTimeo
 
 let firstload = true;
 
+let cursor = document.querySelector(".cursor");
+let cursordot = document.querySelector(".cursor-dot");
 let toAnim = [];
+let oldmousex = 0;
+let oldmousey = 0;
+let mouseX = 0;
+let mouseY = 0;
+let dotX = 0;
+let dotY = 0;
+const lerpf = 0.25;
+let preloader = document.querySelector(".preloader");
+let centerchanger = null;
+let changer = document.querySelectorAll(".changer");
+
+changer.forEach((c) => {
+    c.addEventListener("mouseover", () => {
+        if (c.classList.contains("center-changer")) {
+            centerchanger = c;
+        }
+
+        cursor.classList.add("changed");
+    })
+    
+    c.addEventListener("mouseout", () => {
+        if (c.classList.contains("center-changer")) {
+            centerchanger = null;
+        }
+
+        if (cursor.classList.contains("changed")) { cursor.classList.remove("changed"); }
+    })
+});
+
+window.addEventListener('mousemove', (e) => {
+    dotX = e.clientX;
+    dotY = e.clientY;
+    if (centerchanger == null) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    } else {
+      mouseX = centerchanger.getBoundingClientRect().left + (centerchanger.clientWidth / 2);
+      mouseY = centerchanger.getBoundingClientRect().top + (centerchanger.clientHeight / 2);
+    }
+});
 
 pageData = {
     "index": {
@@ -77,10 +119,8 @@ function doLoad(data) {
 function doPreload() {
     let toSlide = document.querySelectorAll(".unslided");
 
-    // let preloader = document.querySelector(".preloader");
-    // preloader.classList.add("loaded");
-
-    console.log(toSlide);
+    let preloader = document.querySelector(".preloader");
+    preloader.classList.add("loaded");
 
     document.body.classList.remove("unloaded");
     document.body.classList.add("loaded");
@@ -120,15 +160,15 @@ function loop() {
         }
     });
 
-    // if (screen.width > 1000) {
-    //     cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
-    //     cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
-    //     oldmousex = lerp(oldmousex, mouseX, lerpf);
-    //     oldmousey = lerp(oldmousey, mouseY, lerpf);
+    if (screen.width > 1000) {
+        cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
+        cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
+        oldmousex = lerp(oldmousex, mouseX, lerpf);
+        oldmousey = lerp(oldmousey, mouseY, lerpf);
         
-    //     cursordot.style.left = dotX + "px";
-    //     cursordot.style.top = dotY + "px";
-    // }
+        cursordot.style.left = dotX + "px";
+        cursordot.style.top = dotY + "px";
+    }
 
     scroll(loop);
 }
