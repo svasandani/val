@@ -43,7 +43,7 @@ navlinks.forEach((nl) => {
         
         doHide();
 
-        loadPage(nl.pathname);
+        setTimeout(() => { loadPage(nl.pathname); }, 400);
     });
 });
 
@@ -126,15 +126,21 @@ function doLoad(data) {
 }
 
 function doHide() {
-
+    let hider = document.querySelector(".hider");
+    hider.classList.add("hiding");
 }
 
 function doPreload() {
+    scrollTo(0,0);
+
     let toSlide = document.querySelectorAll(".unslided");
 
     if (firstload) {
         let preloader = document.querySelector(".preloader");
         preloader.classList.add("loaded");
+    } else {
+        let hider = document.querySelector(".hider");
+        if(hider.classList.contains("hiding")) { setTimeout(() => { hider.classList.remove("hiding"); }, 800); }
     }
 
     document.body.classList.remove("unloaded");
