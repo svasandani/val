@@ -1,6 +1,6 @@
 *, *::after, *::before {
     box-sizing: border-box;
-    cursor: none !important;
+    /* cursor: none !important; */
 }
 
 /* GLOBAL */
@@ -16,7 +16,8 @@
 
 html {
     color: var(--text-color);
-    font-family: "Epilogue", sans-serif;
+    /* font-family: "Epilogue", sans-serif; */
+    font-family: "Nexa";
     scroll-behavior: smooth;
 }
 
@@ -50,6 +51,7 @@ h2.changed {
 }
 
 h3 {
+    font-family: "Choplin";
     font-style: italic;
     font-size: 2.8em;
     font-weight: 100;
@@ -57,6 +59,7 @@ h3 {
 
 p {
     font-size: 1.8em;
+    padding-top: 5px;
 }
 
 .cursor {
@@ -197,6 +200,10 @@ nav a::after {
     background: var(--theme-color);
     border-bottom: 2px solid var(--text-color);
     transition: 0.4s ease-out;
+}
+
+nav a:hover {
+    cursor: pointer;
 }
 
 nav a:hover::after {
@@ -587,7 +594,8 @@ button {
     color: var(--text-color);
     font-size: 1.1em;
     transition: 0.4s ease-out;
-    font-family: "Epilogue";
+    /* font-family: "Epilogue"; */
+    font-family: "Nexa";
 }
 
 button:hover {

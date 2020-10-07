@@ -1,4 +1,4 @@
-let path = window.location.pathname;
+let currentpath = window.location.pathname;
 
 let app = document.getElementById("app");
 
@@ -20,25 +20,6 @@ let dotY = 0;
 const lerpf = 0.25;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
-let changer = document.querySelectorAll(".changer");
-
-changer.forEach((c) => {
-    c.addEventListener("mouseover", () => {
-        if (c.classList.contains("center-changer")) {
-            centerchanger = c;
-        }
-
-        cursor.classList.add("changed");
-    })
-    
-    c.addEventListener("mouseout", () => {
-        if (c.classList.contains("center-changer")) {
-            centerchanger = null;
-        }
-
-        if (cursor.classList.contains("changed")) { cursor.classList.remove("changed"); }
-    })
-});
 
 window.addEventListener('mousemove', (e) => {
     dotX = e.clientX;
@@ -52,34 +33,56 @@ window.addEventListener('mousemove', (e) => {
     }
 });
 
+let navlinks = document.querySelectorAll("nav a");
+
+navlinks.forEach((nl) => {
+    nl.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (nl.pathname == currentpath) return;
+        
+        doHide();
+
+        loadPage(nl.pathname);
+    });
+});
+
 pageData = {
     "index": {
         "title": "Valeria Sofia",
         "path": "/",
         "markup": "index",
+        "customMarkupFunction": () => {
+            // rearrange intro
+        },
     },
     "work": {
         "title": "Work — Valeria Sofia",
-        "path": "/work"
+        "path": "/work",
+        "markup": "work",
+        "customMarkupFunction": () => {
+            console.log("hi");
+        },
     },
     "contact": {
         "title": "Contact — Valeria Sofia",
-        "path": "/contact"
+        "path": "/contact",
+        "markup": "contact",
+        "customMarkupFunction": () => {
+            console.log("hi");
+        },
     },
     "unknown": {
         "title": "404 — Valeria Sofia",
-        "path": "/404"
-    },
-    "test": {
-        "title": "Test — Valeria Sofia",
-        "path": "/test.html",
-        "markup": "index",
+        "path": "/404",
+        "markup": "404",
+        "customMarkupFunction": () => {
+            console.log("hi");
+        },
     }
 }
 
-loadPage(path);
-    
-firstload = false;
+loadPage(currentpath);
 
 function loadPage(path) {
     if (path == "/") {
@@ -93,10 +96,12 @@ function loadPage(path) {
     } else {
         doLoad(pageData.unknown);
     }
+
+    currentpath = path;
 }
 
 function doLoad(data) {
-    history.pushState(data, null, data.path);
+    history.pushState({ "path": data.path }, null, data.path);
 
     let markupurl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") + "/assets/markup/" + data.markup;
 
@@ -110,17 +115,27 @@ function doLoad(data) {
         .then(() => {
             document.title = data.title;
 
+            data.customMarkupFunction();
+
             doPreload();
 
             doAnims();
+                        
+            firstload = false;
         });    
+}
+
+function doHide() {
+
 }
 
 function doPreload() {
     let toSlide = document.querySelectorAll(".unslided");
 
-    let preloader = document.querySelector(".preloader");
-    preloader.classList.add("loaded");
+    if (firstload) {
+        let preloader = document.querySelector(".preloader");
+        preloader.classList.add("loaded");
+    }
 
     document.body.classList.remove("unloaded");
     document.body.classList.add("loaded");
@@ -133,6 +148,26 @@ function doPreload() {
 }
 
 function doAnims() {
+    let changer = document.querySelectorAll(".changer");
+    
+    changer.forEach((c) => {
+        c.addEventListener("mouseover", () => {
+            if (c.classList.contains("center-changer")) {
+                centerchanger = c;
+            }
+    
+            cursor.classList.add("changed");
+        })
+        
+        c.addEventListener("mouseout", () => {
+            if (c.classList.contains("center-changer")) {
+                centerchanger = null;
+            }
+    
+            if (cursor.classList.contains("changed")) { cursor.classList.remove("changed"); }
+        })
+    });
+
     toAnim = Array.from(document.querySelectorAll(".unchanged"));
 
     let toLoad = document.querySelectorAll("img.unloaded");
@@ -166,8 +201,8 @@ function loop() {
         oldmousex = lerp(oldmousex, mouseX, lerpf);
         oldmousey = lerp(oldmousey, mouseY, lerpf);
         
-        cursordot.style.left = dotX + "px";
-        cursordot.style.top = dotY + "px";
+        cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
+        cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
     }
 
     scroll(loop);
