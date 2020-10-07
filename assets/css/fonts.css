@@ -1,0 +1,7 @@
+/* FONTS */
+
+@font-face {
+    font-family: 'Lexend';
+    src: url(lexend.ttf);
+    font-display: swap;
+}
