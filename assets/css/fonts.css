@@ -1,0 +1,19 @@
+/* FONTS */
+
+@font-face {
+    font-family: 'Lexend';
+    src: url(lexend.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nexa';
+    src: url(nexa.otf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Choplin';
+    src: url(choplin.ttf);
+    font-display: swap;
+}
