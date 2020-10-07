@@ -62,6 +62,10 @@ p {
     padding-top: 5px;
 }
 
+#app {
+    user-select: none;
+}
+
 .cursor {
     width: 80px;
     height: 80px;
@@ -231,6 +235,15 @@ header, section {
     border: 1px solid var(--border-color);
 }
 
+section.unslided {
+    border-color: #00000000;
+}
+
+section.slided {
+    border-color: var(--border-color);
+    transition: border-color 0.8s linear;
+}
+
 section {
     padding: 25px;
 }
@@ -288,7 +301,13 @@ body.unloaded {
 }
 
 body.loaded {
-    overflow: auto;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    body.loaded {
+        overflow: auto;
+    }
 }
 
 .preloader {
@@ -309,23 +328,48 @@ body.loaded {
 }
 
 .hider {
-    width: 300vw;
-    height: 300vh;
-    transform: rotate(35deg);
-    background: var(--text-color);
+    width: 100%;
+    height: 100vh;
     z-index: 999;
     position: fixed;
-    top: -120vh;
-    left: -120vw;
+    top: 0;
+    left: 0;
     opacity: 0;
     pointer-events: none;
     transition: 0s ease-out;
+    padding: 0 25px;
+    background: var(--theme-color);
+    transition: 0.4s ease-out;
+}
+
+.hider-scribble-container {
+    margin: 25px 0;
+    height: calc(100% - 50px);
+    overflow: hidden;
+    position: relative;
+}
+
+.hider-scribble {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    object-fit: cover;
+    z-index: 999;
+    stroke: var(--text-color);
 }
 
 .hider.hiding {
     opacity: 1;
     pointer-events: all;
     transition: 0.4s ease-out;
+}
+
+@media (max-width: 1000px) {
+    .hider {    
+        background: var(--text-color);
+    }
 }
 
 /* INDEX */
@@ -335,11 +379,11 @@ body.loaded {
 #landing {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: calc(100vh - 50px);
     padding-top: 75px;
 }
 
-#landing .scribble {
+.scribble {
     position: absolute;
     top: -50%;
     left: -50%;
@@ -365,8 +409,9 @@ body.loaded {
 }
 
 .artist-statement {
-    margin-top: 10vh;
-    margin-left: 55%;
+    position: absolute;
+    right: 5vw;
+    bottom: 10vh;
     width: 42%;
 }
 
@@ -378,6 +423,18 @@ body.loaded {
     left: 15vw;
     height: 10vh;
     width: 71px;
+    opacity: 1;
+}
+
+.scroll-btn-container.unslided {
+    bottom: 18vh;
+    opacity: 0;
+}
+
+.scroll-btn-container.slided {
+    bottom: 15vh;
+    opacity: 1;
+    transition: 0.8s ease-out;
 }
 
 .scroll-btn {
@@ -517,6 +574,9 @@ body.loaded {
     }
 
     .artist-statement {
+        position: relative;
+        right: auto;
+        bottom: auto;
         margin-left: 0px;
         width: 100%;
         margin-top: 10vh;
@@ -539,17 +599,12 @@ body.loaded {
 }
 
 #contact {
-    position: fixed;
-    top: 99px;
-    height: calc(100vh - 125px);
-    left: -100vw;
-    width: calc(100% - 50px);
-    z-index: 999;
     transition: 0.6s ease-out;
 
     padding: 25px;
-    background: var(--theme-color);
     border: 1px solid var(--text-color);
+    overflow: hidden;
+    position: relative;
 }
 
 #contact.show {
@@ -580,6 +635,12 @@ body.loaded {
 
 label {
     font-family: "Choplin";
+    font-size: 1.3em;
+}
+
+.form-container {
+    float: right;
+    width: 50%;
 }
 
 input, textarea {
@@ -589,7 +650,7 @@ input, textarea {
     color: var(--text-color);
     font-size: 2em;
     font-family: 'Lexend';
-    width: 35%;
+    width: 100%;
     margin-bottom: 50px;
     margin-top: 25px;
     height: 2em;
@@ -613,13 +674,14 @@ button {
     background: none;
     outline: none;
     border: 1px solid var(--text-color);
-    width: 35%;
+    width: 100%;
     margin: 25px 0;
     color: var(--text-color);
     font-size: 1.1em;
     transition: 0.4s ease-out;
     /* font-family: "Epilogue"; */
-    font-family: "Nexa";
+    /* font-family: "Nexa"; */
+    font-family: "Lexend";
 }
 
 button:hover {
@@ -635,6 +697,10 @@ button:hover {
 
     #contact {
         transition: 0.3s ease-out;
+    }
+
+    .form-container {
+        float: none;
     }
     
     input, textarea, button {

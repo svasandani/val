@@ -17,6 +17,9 @@ let mouseX = 0;
 let mouseY = 0;
 let dotX = 0;
 let dotY = 0;
+let oldscrollamt = 0;
+let scrollamt = 0;
+let scrollt = 0;
 const lerpf = 0.25;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
@@ -31,6 +34,32 @@ window.addEventListener('mousemove', (e) => {
       mouseX = centerchanger.getBoundingClientRect().left + (centerchanger.clientWidth / 2);
       mouseY = centerchanger.getBoundingClientRect().top + (centerchanger.clientHeight / 2);
     }
+
+    if (scrollt > 0) {
+        scrollamt = oldscrollamt + ((e.clientY - scrollt) * 1.2);
+    }
+});
+
+window.addEventListener('mousedown', (e) => {
+    if (screen.width > 1000) scrollt = e.clientY;
+});
+
+window.addEventListener('mouseup', () => {
+    scrollt = 0;
+    oldscrollamt = scrollamt;
+    if (scrollamt > 0) falltozero(1);
+    if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+});
+
+window.addEventListener('wheel', (e) => {
+    e.preventDefault();
+
+    if ((scrollamt + event.deltaY * -0.3 > 0 && event.deltaY * -0.3 > 0) || (scrollamt - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -0.3 < 0)) return;
+
+    scrollamt += event.deltaY * -0.3;
+    oldscrollamt += event.deltaY * -0.3;
+    if (scrollamt > 0) falltozero(1);
+    if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
 });
 
 let navlinks = document.querySelectorAll("nav a");
@@ -54,6 +83,13 @@ pageData = {
         "markup": "index",
         "customMarkupFunction": () => {
             // rearrange intro
+            let scrollbtn = document.querySelector(".scroll-btn-container");
+
+            scrollbtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                falltosetamt(25 - window.innerHeight, 1);
+            })
         },
     },
     "work": {
@@ -131,7 +167,8 @@ function doHide() {
 }
 
 function doPreload() {
-    scrollTo(0,0);
+    scrollamt = 0;
+    oldscrollamt = 0;
 
     let toSlide = document.querySelectorAll(".unslided");
 
@@ -192,6 +229,92 @@ function doAnims() {
     loop();
 }
 
+function falltozero(level) {
+    if (scrollt != 0) return;
+
+    if (scrollamt >= 0) {
+        if (scrollamt - 8 < 0) {
+            scrollamt = 0;
+            oldscrollamt = 0;
+        } else {
+            scrollamt -= 8;
+            oldscrollamt = scrollamt;
+            if (level == 30) {
+                setTimeout(() => { falltozero(level); }, 1);
+            } else {
+                setTimeout(() => { falltozero(level + 1); }, (30 / level));
+            }
+            
+        }
+    }
+}
+
+function falltoheight(level) {
+    if (scrollt != 0) return;
+
+    if (scrollamt <= (window.innerHeight - app.offsetHeight - 25)) {
+        if (scrollamt + 8 > (window.innerHeight - app.offsetHeight - 25)) {
+            scrollamt = (window.innerHeight - app.offsetHeight - 25);
+            oldscrollamt = (window.innerHeight - app.offsetHeight - 25);
+        } else {
+            scrollamt += 8;
+            oldscrollamt = scrollamt;
+            if (level == 30) {
+                setTimeout(() => { falltoheight(level); }, 1);
+            } else {
+                setTimeout(() => { falltoheight(level + 1); }, (30 / level));
+            }
+            
+        }
+    }
+}
+
+function falltosetamt(amt, level) {
+    if (scrollamt < amt) falltosetamtfrombelow(amt, level);
+    else if (scrollamt > amt) falltosetamtfromabove(amt, level);
+    else return;
+}
+
+function falltosetamtfrombelow(amt, level) {
+    if (scrollt != 0) return;
+
+    if (scrollamt <= amt) {
+        if (scrollamt + 8 > amt) {
+            scrollamt = amt;
+            oldscrollamt = amt;
+        } else {
+            scrollamt += 8;
+            oldscrollamt = scrollamt;
+            if (level == 30) {
+                setTimeout(() => { falltosetamtfrombelow(amt, level); }, 1);
+            } else {
+                setTimeout(() => { falltosetamtfrombelow(amt, level + 1); }, (30 / level));
+            }
+            
+        }
+    }
+}
+
+function falltosetamtfromabove(amt, level) {
+    if (scrollt != 0) return;
+
+    if (scrollamt >= amt) {
+        if (scrollamt - 8 < amt) {
+            scrollamt = amt;
+            oldscrollamt = amt;
+        } else {
+            scrollamt -= 8;
+            oldscrollamt = scrollamt;
+            if (level == 30) {
+                setTimeout(() => { falltosetamtfromabove(amt, level); }, 1);
+            } else {
+                setTimeout(() => { falltosetamtfromabove(amt, level + 1); }, (30 / level));
+            }
+            
+        }
+    }
+}
+
 function loop() {
     toAnim.forEach((t, i) => {
         if (isElementInViewport(t)) {
@@ -210,6 +333,8 @@ function loop() {
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
     }
+
+    app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
 
     scroll(loop);
 }
