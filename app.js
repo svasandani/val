@@ -2,6 +2,8 @@ let currentpath = window.location.pathname;
 
 let app = document.getElementById("app");
 
+let scribble = document.querySelector(".scribble");
+
 let parser = new DOMParser();
 
 var scroll = window.requestAnimationFrame || function(callback){ window.setTimeout(callback, 1000/60)};
@@ -20,6 +22,8 @@ let dotY = 0;
 let oldscrollamt = 0;
 let scrollamt = 0;
 let scrollt = 0;
+let target = 0;
+let wheeling = false;
 const lerpf = 0.25;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
@@ -41,6 +45,7 @@ window.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('mousedown', (e) => {
+    wheeling = false;
     if (screen.width > 1000) scrollt = e.clientY;
 });
 
@@ -52,14 +57,16 @@ window.addEventListener('mouseup', () => {
 });
 
 window.addEventListener('wheel', (e) => {
-    e.preventDefault();
+    // if ((target + event.deltaY * -0.3 > 0 && event.deltaY * -1 > 0) || (target - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -1 < 0)) return;
 
-    if ((scrollamt + event.deltaY * -0.3 > 0 && event.deltaY * -0.3 > 0) || (scrollamt - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -0.3 < 0)) return;
+    if ((scrollamt > -10 && scrollamt + event.deltaY * -1 > 10) || (scrollamt < (window.innerHeight - app.offsetHeight + 5) && scrollamt + event.deltaY * -1 < (window.innerHeight - app.offsetHeight - 15))) {
+        wheeling = false;
+        return;
+    }
 
-    scrollamt += event.deltaY * -0.3;
-    oldscrollamt += event.deltaY * -0.3;
-    if (scrollamt > 0) falltozero(1);
-    if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+    if (wheeling) target += event.deltaY * -1;
+    else target = scrollamt + event.deltaY * -1;
+    wheeling = true;
 });
 
 let navlinks = document.querySelectorAll("nav a");
@@ -188,6 +195,8 @@ function doPreload() {
             t.classList.remove("unslided"); t.classList.add("slided"); 
         }, 600);
     });
+
+    scribble = document.querySelector(".scribble");
 }
 
 function doAnims() {
@@ -290,7 +299,6 @@ function falltosetamtfrombelow(amt, level) {
             } else {
                 setTimeout(() => { falltosetamtfrombelow(amt, level + 1); }, (30 / level));
             }
-            
         }
     }
 }
@@ -310,7 +318,6 @@ function falltosetamtfromabove(amt, level) {
             } else {
                 setTimeout(() => { falltosetamtfromabove(amt, level + 1); }, (30 / level));
             }
-            
         }
     }
 }
@@ -335,6 +342,18 @@ function loop() {
     }
 
     app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
+    scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
+
+    if (wheeling) {
+        if (Math.abs(scrollamt - target) < 50) wheeling = false;
+        else {
+            scrollamt = lerp(scrollamt, target, 0.2);
+            oldscrollamt = scrollamt;
+        }
+    } else {
+        if (scrollamt > 0) falltozero(1);
+        if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+    }
 
     scroll(loop);
 }

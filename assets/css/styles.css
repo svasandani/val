@@ -410,9 +410,9 @@ body.loaded {
 
 .artist-statement {
     position: absolute;
-    right: 5vw;
+    right: 75px;
     bottom: 10vh;
-    width: 42%;
+    width: auto;
 }
 
 .scroll-btn-container {
@@ -605,6 +605,9 @@ body.loaded {
     border: 1px solid var(--text-color);
     overflow: hidden;
     position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 #contact.show {
@@ -639,8 +642,17 @@ label {
 }
 
 .form-container {
-    float: right;
-    width: 50%;
+    margin-top: 11vh;
+    width: 100%;
+}
+
+.form-container.unslided {
+    opacity: 0;
+}
+
+.form-container.slided {
+    opacity: 1;
+    transition: 0.8s ease-out;
 }
 
 input, textarea {
@@ -697,10 +709,11 @@ button:hover {
 
     #contact {
         transition: 0.3s ease-out;
+        grid-template-columns: 1fr;
     }
 
     .form-container {
-        float: none;
+        margin-top: 0;
     }
     
     input, textarea, button {
