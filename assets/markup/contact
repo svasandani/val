@@ -10,11 +10,11 @@
     <div class="form-container">
             <p class="ending">Thanks for reaching out!</p>
             <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbwt7S99UmGt4vOWMyZUjSaqyVTFpgDHc3I2YsQO0w/exec">
-                <label for="email" class="unslided">What's your email?</label>
-                <input id="email" name="email" type="email" class="unslided" required />
-                <label for="msg" class="unslided">Your message for me:</label>
-                <textarea id="msg" name="msg" class="unslided" required></textarea>
-                <button class="submit-btn changer unchanged unslided">EMAIL ME</button>
+                <label for="email" class="unslided no-scroll">What's your email?</label>
+                <input id="email" name="email" type="email" class="unslided no-scroll" required />
+                <label for="msg" class="unslided no-scroll">Your message for me:</label>
+                <textarea id="msg" name="msg" class="unslided no-scroll" required></textarea>
+                <button class="submit-btn changer unchanged unslided no-scroll">EMAIL ME</button>
             </form>
         </div>
 </section>

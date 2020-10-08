@@ -141,7 +141,15 @@ pageData = {
                 e.preventDefault();
 
                 falltosetamt(25 - window.innerHeight, 1);
-            })
+            });
+
+            let cards = document.querySelectorAll(".work-card");
+            cards.forEach((c) => {
+                c.addEventListener('mouseover', (e) => {
+                    if (scrollt != 0) c.classList.add("no-hover");
+                    else if (c.classList.contains("no-hover")) c.classList.remove("no-hover");
+                });
+            });
         },
         "customOffload": () => {
             window.removeEventListener('resize', resizetext);
@@ -408,7 +416,7 @@ function loop() {
         if (wheeling) {
             if (Math.abs(scrollamt - target) < 50) wheeling = false;
             else {
-                scrollamt = lerp(scrollamt, target, 0.2);
+                scrollamt = lerp(scrollamt, target, 0.1);
                 oldscrollamt = scrollamt;
             }
         } else {

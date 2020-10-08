@@ -510,18 +510,18 @@ body.loaded {
     transition: 0.8s ease-out;
 }
 
-.work-card:hover {
+.work-card:not(.no-hover):hover {
     cursor: pointer;
     /* padding: 75px; */
     transition: 1s ease-out;
 }
 
-.work-card:hover::after {
+.work-card:not(.no-hover):hover::after {
     width: 0%;
     transition: 0.8s ease-out;
 }
 
-.work-card:hover .work-description {
+.work-card:not(.no-hover):hover .work-description {
     left: 0px;
     bottom: 0px;
     opacity: 0;
