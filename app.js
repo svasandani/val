@@ -39,12 +39,13 @@ window.addEventListener('mousemove', (e) => {
       mouseY = centerchanger.getBoundingClientRect().top + (centerchanger.clientHeight / 2);
     }
 
-    if (scrollt > 0) {
+    if (scrollt != 0) {
         scrollamt = oldscrollamt + ((e.clientY - scrollt) * 1.2);
     }
 });
 
 window.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains("no-scroll")) return;
     wheeling = false;
     if (screen.width > 1000) scrollt = e.clientY;
 });
@@ -375,10 +376,8 @@ function loop() {
         
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
-    }
-
-    if (screen.width > 1000) {
-        app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
+        
+        app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px) scale(" + (scrollt == 0 ? "1" : "0.9") + ")";
         scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
 
         if (wheeling) {
@@ -389,7 +388,6 @@ function loop() {
             }
         } else {
             if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight - 25))) {
-                console.log(scrollamt);
                 if (scrollamt > 0) falltozero(1);
                 if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
             }
