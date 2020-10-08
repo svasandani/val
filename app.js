@@ -103,7 +103,7 @@ pageData = {
             };
 
             let statement = document.querySelector(".artist-statement");
-            statement.style.letterSpacing = "0.14em";
+            statement.style.letterSpacing = (screen.width > 1000 ? "0.14em" : "0.12em");
             let text = statement.innerHTML;
 
             statement.innerHTML = "";
@@ -269,7 +269,7 @@ function doAnims() {
     toLoad.forEach((t) => {
         t.addEventListener('load', () => { show(t); })
 
-        setTimeout(() => { show(t); }, 2000);
+        setTimeout(() => { show(t); }, 3000);
     });
 
     loop();
