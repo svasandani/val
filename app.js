@@ -169,6 +169,17 @@ pageData = {
     "contact": {
         "title": "Contact — Valeria Sofia",
         "path": "/contact",
+        "markup": "contact",
+        "customOnload": () => {
+            console.log("hi");
+        },
+        "customOffload": () => {
+            console.log("bye");
+        }
+    },
+    "unknown": {
+        "title": "404 — Valeria Sofia",
+        "path": "/404",
         "markup": "404",
         "customOnload": () => {
             resizetext = () => {
@@ -213,17 +224,6 @@ pageData = {
             resizetext();
 
             window.addEventListener('resize', resizetext);
-        },
-        "customOffload": () => {
-            console.log("bye");
-        }
-    },
-    "unknown": {
-        "title": "404 — Valeria Sofia",
-        "path": "/404",
-        "markup": "404",
-        "customOnload": () => {
-            console.log("hi");
         },
         "customOffload": () => {
             console.log("bye");
@@ -462,7 +462,6 @@ function loop() {
             }
         } else {
             if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight))) {
-                console.log(scrollamt, window.innerHeight - app.offsetHeight);
                 if (scrollamt > 0) falltozero(1);
                 if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
             }
