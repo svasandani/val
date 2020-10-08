@@ -90,41 +90,48 @@ pageData = {
         "path": "/",
         "markup": "index",
         "customMarkupFunction": () => {
-            const getNewDiv = () => {
-                let slice = document.createElement("div");
-                slice.classList.add("slide-up");
+            const resizetext = () => {
+                const getNewDiv = () => {
+                    let slice = document.createElement("div");
+                    slice.classList.add("slide-up");
 
-                let p = document.createElement("p");
-                p.classList.add("unslided");
+                    let p = document.createElement("p");
+                    if (document.querySelector("h1").classList.contains("unslided")) { p.classList.add("unslided"); }
+                    else p.classList.add("slided");
 
-                slice.appendChild(p);
+                    slice.appendChild(p);
 
-                return { "div": slice, "p": p };
-            };
+                    return { "div": slice, "p": p };
+                };
 
-            let statement = document.querySelector(".artist-statement");
-            statement.style.letterSpacing = (screen.width > 1000 ? "0.14em" : "0.12em");
-            let text = statement.innerHTML;
+                let statement = document.querySelector(".artist-statement");
+                statement.style.letterSpacing = (screen.width > 1000 ? "0.15em" : "0.12em");
+                let text = statement.dataset.text;
 
-            statement.innerHTML = "";
+                statement.innerHTML = "";
 
-            let activeline = getNewDiv();
-            activeline.p.innerHTML = text.charAt(0);
-            
-            for(let i = 1; i < text.length; i++) {
-                statement.appendChild(activeline.div);
-                let height = statement.offsetHeight;
-                activeline.p.innerHTML += text.charAt(i);
-                if (statement.offsetHeight > height) {
-                    activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
-                    activeline = getNewDiv();
-                    activeline.p.innerHTML = text.charAt(i);
-                } else {
-                    statement.removeChild(activeline.div);
+                let activeline = getNewDiv();
+                activeline.p.innerHTML = text.charAt(0);
+                
+                for(let i = 1; i < text.length; i++) {
+                    statement.appendChild(activeline.div);
+                    let height = statement.offsetHeight;
+                    activeline.p.innerHTML += text.charAt(i);
+                    if (statement.offsetHeight > height) {
+                        activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
+                        activeline = getNewDiv();
+                        activeline.p.innerHTML = text.charAt(i);
+                    } else {
+                        statement.removeChild(activeline.div);
+                    }
                 }
+                statement.appendChild(activeline.div);
+                statement.style.letterSpacing = "0em";
             }
-            statement.appendChild(activeline.div);
-            statement.style.letterSpacing = "0em";
+
+            resizetext();
+
+            window.addEventListener('resize', resizetext);
 
             let scrollbtn = document.querySelector(".scroll-btn-container");
 
