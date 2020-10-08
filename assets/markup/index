@@ -6,14 +6,7 @@
     <a class="scroll-btn-container changer center-changer unslided"><span class="scroll-btn"></span></a>
     <div class="landing-h1 slide-up"><h1 class="unslided">VALERIA</h1></div>
     <div class="landing-h1 slide-up no-margin"><h1 class="no-margin unslided">SOFIA</h1></div>
-    <div class="artist-statement">
-        <div class="slide-up"><p class="unslided">Valeria Sofia is a visual artist based in</p></div>
-        <div class="slide-up"><p class="unslided">New York City. A multidisciplinary</p></div>
-        <div class="slide-up"><p class="unslided">artist, she works with both 2D and 3D</p></div>
-        <div class="slide-up"><p class="unslided">media, including paint, cermaics, and</p></div>
-        <div class="slide-up"><p class="unslided">digital. She has a Bachelor of Fine Arts</p></div>
-        <div class="slide-up"><p class="unslided">from New York University.</p></div>
-    </div>
+    <div class="artist-statement">Valeria Sofia is a visual artist based in New York City. A multidisciplinary artist, she works with both 2D and 3D media, including paint, ceramics, and digital. She has a Bachelor of Fine Arts from New York University.</div>
 </section>
 <div class="spacer" id="recent"></div>
 <section class="recent unslided">

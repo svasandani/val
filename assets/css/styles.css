@@ -285,13 +285,13 @@ section {
 }
 
 .slide-up *.unslided {
-    transform: translateY(1em);
-    transition: 0.8s ease-out;
+    transform: translateY(1.1em);
+    transition: transform 0.8s ease-out;
 }
 
 .slide-up *.slided {
     transform: none;
-    transition: 0.8s ease-out;
+    transition: transform 0.8s ease-out;
 }
 
 /* PRELOADER */
@@ -412,14 +412,14 @@ body.loaded {
     position: absolute;
     right: 75px;
     bottom: 10vh;
-    width: auto;
+    width: 30vw;
 }
 
 .scroll-btn-container {
     padding: 0 35px;
     display: block;
     position: absolute;
-    bottom: 15vh;
+    bottom: 10vh;
     left: 15vw;
     height: 10vh;
     width: 71px;
@@ -427,12 +427,12 @@ body.loaded {
 }
 
 .scroll-btn-container.unslided {
-    bottom: 18vh;
+    bottom: 13vh;
     opacity: 0;
 }
 
 .scroll-btn-container.slided {
-    bottom: 15vh;
+    bottom: 10vh;
     opacity: 1;
     transition: 0.8s ease-out;
 }
@@ -580,7 +580,6 @@ body.loaded {
         margin-left: 0px;
         width: 100%;
         margin-top: 10vh;
-        font-size: 1.2em;
     }
 
     .scroll-btn {
@@ -588,13 +587,13 @@ body.loaded {
     }
     
     .slide-up p.unslided {
-        transform: translateY(2em);
-        transition: 0.8s ease-out;
+        transform: translateY(1.2em);
+        transition: transform 0.8s ease-out;
     }
     
     .slide-up p.slided {
         transform: none;
-        transition: 0.8s ease-out;
+        transition: transform 0.8s ease-out;
     }
 }
 

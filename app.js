@@ -89,7 +89,43 @@ pageData = {
         "path": "/",
         "markup": "index",
         "customMarkupFunction": () => {
-            // rearrange intro
+            const getNewDiv = () => {
+                let slice = document.createElement("div");
+                slice.classList.add("slide-up");
+
+                let p = document.createElement("p");
+                p.classList.add("unslided");
+
+                slice.appendChild(p);
+
+                return { "div": slice, "p": p };
+            };
+
+            let statement = document.querySelector(".artist-statement");
+            statement.style.letterSpacing = "0.13em";
+            console.log(statement.style.transform);
+            let text = statement.innerHTML;
+
+            statement.innerHTML = "";
+
+            let activeline = getNewDiv();
+            activeline.p.innerHTML = text.charAt(0);
+            
+            for(let i = 1; i < text.length; i++) {
+                statement.appendChild(activeline.div);
+                let height = statement.offsetHeight;
+                activeline.p.innerHTML += text.charAt(i);
+                if (statement.offsetHeight > height) {
+                    activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
+                    activeline = getNewDiv();
+                    activeline.p.innerHTML = text.charAt(i);
+                } else {
+                    statement.removeChild(activeline.div);
+                }
+            }
+            statement.appendChild(activeline.div);
+            statement.style.letterSpacing = "0em";
+
             let scrollbtn = document.querySelector(".scroll-btn-container");
 
             scrollbtn.addEventListener('click', (e) => {
