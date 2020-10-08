@@ -409,6 +409,7 @@ body.loaded {
 }
 
 .artist-statement {
+    font-size: calc(0.95vmin + 0.55vmax);
     position: absolute;
     right: 75px;
     bottom: 10vh;
@@ -574,6 +575,7 @@ body.loaded {
     }
 
     .artist-statement {
+        font-size: 1rem;
         position: relative;
         right: auto;
         bottom: auto;
@@ -607,6 +609,8 @@ body.loaded {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    min-height: calc(100vh - 50px);
 }
 
 #contact.show {

@@ -102,8 +102,7 @@ pageData = {
             };
 
             let statement = document.querySelector(".artist-statement");
-            statement.style.letterSpacing = "0.13em";
-            console.log(statement.style.transform);
+            statement.style.letterSpacing = "0.14em";
             let text = statement.innerHTML;
 
             statement.innerHTML = "";
@@ -389,8 +388,11 @@ function loop() {
                 oldscrollamt = scrollamt;
             }
         } else {
-            if (scrollamt > 0) falltozero(1);
-            if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+            if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight - 25))) {
+                console.log(scrollamt);
+                if (scrollamt > 0) falltozero(1);
+                if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+            }
         }
     }
 
