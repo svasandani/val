@@ -169,9 +169,50 @@ pageData = {
     "contact": {
         "title": "Contact — Valeria Sofia",
         "path": "/contact",
-        "markup": "contact",
+        "markup": "404",
         "customOnload": () => {
-            console.log("hi");
+            resizetext = () => {
+                const getNewDiv = () => {
+                    let slice = document.createElement("div");
+                    slice.classList.add("slide-up");
+
+                    let p = document.createElement("p");
+                    if (document.querySelector("h1").classList.contains("unslided")) { p.classList.add("unslided"); }
+                    else p.classList.add("slided");
+
+                    slice.appendChild(p);
+
+                    return { "div": slice, "p": p };
+                };
+
+                let statement = document.querySelector(".artist-statement");
+                statement.style.letterSpacing = (screen.width > 1000 ? "0.15em" : "0.12em");
+                let text = statement.dataset.text;
+
+                statement.innerHTML = "";
+
+                let activeline = getNewDiv();
+                activeline.p.innerHTML = text.charAt(0);
+                
+                for(let i = 1; i < text.length; i++) {
+                    statement.appendChild(activeline.div);
+                    let height = statement.offsetHeight;
+                    activeline.p.innerHTML += text.charAt(i);
+                    if (statement.offsetHeight > height) {
+                        activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
+                        activeline = getNewDiv();
+                        activeline.p.innerHTML = text.charAt(i);
+                    } else {
+                        statement.removeChild(activeline.div);
+                    }
+                }
+                statement.appendChild(activeline.div);
+                statement.style.letterSpacing = "0em";
+            }
+
+            resizetext();
+
+            window.addEventListener('resize', resizetext);
         },
         "customOffload": () => {
             console.log("bye");
@@ -420,7 +461,8 @@ function loop() {
                 oldscrollamt = scrollamt;
             }
         } else {
-            if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight - 25))) {
+            if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight))) {
+                console.log(scrollamt, window.innerHeight - app.offsetHeight);
                 if (scrollamt > 0) falltozero(1);
                 if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
             }
