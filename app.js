@@ -176,6 +176,7 @@ function doHide() {
 function doPreload() {
     scrollamt = 0;
     oldscrollamt = 0;
+    if (screen.width < 1000) scrollTo(0,0);
 
     let toSlide = document.querySelectorAll(".unslided");
 
@@ -341,18 +342,20 @@ function loop() {
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
     }
 
-    app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
-    scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
+    if (screen.width > 1000) {
+        app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
+        scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
 
-    if (wheeling) {
-        if (Math.abs(scrollamt - target) < 50) wheeling = false;
-        else {
-            scrollamt = lerp(scrollamt, target, 0.2);
-            oldscrollamt = scrollamt;
+        if (wheeling) {
+            if (Math.abs(scrollamt - target) < 50) wheeling = false;
+            else {
+                scrollamt = lerp(scrollamt, target, 0.2);
+                oldscrollamt = scrollamt;
+            }
+        } else {
+            if (scrollamt > 0) falltozero(1);
+            if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
         }
-    } else {
-        if (scrollamt > 0) falltozero(1);
-        if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
     }
 
     scroll(loop);
