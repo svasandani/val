@@ -1,4 +1,5 @@
 let currentpath = window.location.pathname;
+let currentdata = null;
 
 let app = document.getElementById("app");
 
@@ -27,6 +28,7 @@ let wheeling = false;
 const lerpf = 0.25;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
+let resizetext = null;
 
 window.addEventListener('mousemove', (e) => {
     dotX = e.clientX;
@@ -89,8 +91,8 @@ pageData = {
         "title": "Valeria Sofia",
         "path": "/",
         "markup": "index",
-        "customMarkupFunction": () => {
-            const resizetext = () => {
+        "customOnload": () => {
+            resizetext = () => {
                 const getNewDiv = () => {
                     let slice = document.createElement("div");
                     slice.classList.add("slide-up");
@@ -141,45 +143,61 @@ pageData = {
                 falltosetamt(25 - window.innerHeight, 1);
             })
         },
+        "customOffload": () => {
+            window.removeEventListener('resize', resizetext);
+        }
     },
     "work": {
         "title": "Work — Valeria Sofia",
         "path": "/work",
         "markup": "work",
-        "customMarkupFunction": () => {
+        "customOnload": () => {
             console.log("hi");
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     },
     "contact": {
         "title": "Contact — Valeria Sofia",
         "path": "/contact",
         "markup": "contact",
-        "customMarkupFunction": () => {
+        "customOnload": () => {
             console.log("hi");
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     },
     "unknown": {
         "title": "404 — Valeria Sofia",
         "path": "/404",
         "markup": "404",
-        "customMarkupFunction": () => {
+        "customOnload": () => {
             console.log("hi");
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     }
 }
 
 loadPage(currentpath);
 
 function loadPage(path) {
+    if (currentdata != null) currentdata.customOffload();
+
     if (path == "/") {
+        currentdata = pageData.index;
         doLoad(pageData.index);
     } else if (path == "/work") {
+        currentdata = pageData.work;
         doLoad(pageData.work);
     } else if (path == "/contact") {
+        currentdata = pageData.contact;
         doLoad(pageData.contact);
-    } else if (path == "/test.html") {
-        doLoad(pageData.test);
     } else {
+        currentdata = pageData.unknown;
         doLoad(pageData.unknown);
     }
 
@@ -201,7 +219,7 @@ function doLoad(data) {
         .then(() => {
             document.title = data.title;
 
-            data.customMarkupFunction();
+            data.customOnload();
 
             doPreload();
 
