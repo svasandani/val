@@ -67,8 +67,8 @@ window.addEventListener('wheel', (e) => {
         return;
     }
 
-    if (wheeling) target += event.deltaY * -1;
-    else target = scrollamt + event.deltaY * -1;
+    if (wheeling) target += event.deltaY * -0.7;
+    else target = scrollamt + event.deltaY * -0.7;
     wheeling = true;
 });
 
@@ -414,9 +414,9 @@ function loop() {
         scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
 
         if (wheeling) {
-            if (Math.abs(scrollamt - target) < 50) wheeling = false;
+            if (Math.abs(scrollamt - target) < 50 && (scrollamt > 0 || scrollamt < (window.innerHeight - app.offsetHeight - 25))) wheeling = false;
             else {
-                scrollamt = lerp(scrollamt, target, 0.1);
+                scrollamt = lerp(scrollamt, target, 0.6);
                 oldscrollamt = scrollamt;
             }
         } else {
