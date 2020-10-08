@@ -645,11 +645,13 @@ label {
     width: 100%;
 }
 
-.form-container.unslided {
+.form-container *.unslided {
+    transform: translateX(-100px);
     opacity: 0;
 }
 
-.form-container.slided {
+.form-container *.slided {
+    transform: translateX(0px);
     opacity: 1;
     transition: 0.8s ease-out;
 }
