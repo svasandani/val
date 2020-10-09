@@ -24,8 +24,13 @@ let oldscrollamt = 0;
 let scrollamt = 0;
 let scrollt = 0;
 let target = 0;
+let ticks = Array(1).fill([0,0]);
+let ticksptr = 0;
+let tlast = () => { return ticksptr == 0 ? (ticks.length - 1) : ticksptr - 1; }
+let tenqueue = (toenqueue) => { ticks[tlast()] = toenqueue; }
+let tdequeue = () => { let t = ticksptr; ticksptr = (ticksptr == (ticks.length - 1) ? 0 : ticksptr + 1); return ticks[t]; }
 let wheeling = false;
-const lerpf = 0.25;
+const lerpf = 0.45;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
 let resizetext = null;
@@ -445,8 +450,13 @@ function loop() {
     if (screen.width > 1000) {
         cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
         cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
-        oldmousex = lerp(oldmousex, mouseX, lerpf);
-        oldmousey = lerp(oldmousey, mouseY, lerpf);
+
+        tenqueue([lerp(oldmousex, mouseX, lerpf),lerp(oldmousey, mouseY, lerpf)]);
+
+        let td = tdequeue();
+
+        oldmousex = td[0];
+        oldmousey = td[1];
         
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
