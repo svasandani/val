@@ -92,7 +92,7 @@ p {
     margin-left: -80px;
     margin-top: -80px;
     transition: 0.2s ease-out;
-    transition-property: width, height, margin-left, margin-top, left, top;
+    transition-property: width, height, margin-left, margin-top;
 }
 
 .cursor.anim {
