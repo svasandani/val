@@ -62,6 +62,10 @@ p {
     padding-top: 5px;
 }
 
+a.no-hover:hover {
+    cursor: default;
+}
+
 #app {
     user-select: none;
     transition: transform 0.2s ease-out;
@@ -93,10 +97,6 @@ p {
     margin-top: -80px;
     transition: 0.2s ease-out;
     transition-property: width, height, margin-left, margin-top;
-}
-
-.cursor.anim {
-    transition-property: width, height, margin-left, margin-top, left, top;
 }
 
 .cursor-dot {
@@ -207,11 +207,11 @@ nav a::after {
     transition: 0.4s ease-out;
 }
 
-nav a:hover {
+nav a:not(.no-hover):hover {
     cursor: pointer;
 }
 
-nav a:hover::after {
+nav a:not(.no-hover):hover::after {
     left: 0px;
     width: 100%;
     transition: 0.4s ease-out;
@@ -436,6 +436,10 @@ body.loaded {
     bottom: 10vh;
     opacity: 1;
     transition: 0.8s ease-out;
+}
+
+.scroll-btn-container:not(.no-hover):hover {
+    cursor: pointer;
 }
 
 .scroll-btn {
@@ -701,7 +705,7 @@ button {
     font-family: "Lexend";
 }
 
-button:hover {
+button:not(.no-hover):hover {
     background: var(--text-color);
     color: var(--theme-color);
     cursor: pointer;

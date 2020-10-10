@@ -30,7 +30,7 @@ let tlast = () => { return ticksptr == 0 ? (ticks.length - 1) : ticksptr - 1; }
 let tenqueue = (toenqueue) => { ticks[tlast()] = toenqueue; }
 let tdequeue = () => { let t = ticksptr; ticksptr = (ticksptr == (ticks.length - 1) ? 0 : ticksptr + 1); return ticks[t]; }
 let wheeling = false;
-const lerpf = 0.45;
+const lerpf = 0.15;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
 let resizetext = null;
@@ -146,14 +146,6 @@ pageData = {
                 e.preventDefault();
 
                 falltosetamt(25 - window.innerHeight, 1);
-            });
-
-            let cards = document.querySelectorAll(".work-card");
-            cards.forEach((c) => {
-                c.addEventListener('mouseover', (e) => {
-                    if (scrollt != 0) c.classList.add("no-hover");
-                    else if (c.classList.contains("no-hover")) c.classList.remove("no-hover");
-                });
             });
         },
         "customOffload": () => {
@@ -319,16 +311,21 @@ function doAnims() {
     let changer = document.querySelectorAll(".changer");
     
     changer.forEach((c) => {
-        c.addEventListener("mouseover", () => {
-            if (c.classList.contains("center-changer")) {
+        c.addEventListener("mouseover", (e) => {
+            if (c.classList.contains("center-changer") && scrollt == 0) {
+                // cursor.classList.add("anim");
                 centerchanger = c;
             }
     
-            cursor.classList.add("changed");
+            if (scrollt == 0) {
+                cursor.classList.add("changed");
+                if (c.classList.contains("no-hover")) { c.classList.remove("no-hover"); }
+            } else c.classList.add("no-hover");
         })
         
         c.addEventListener("mouseout", () => {
             if (c.classList.contains("center-changer")) {
+                // if (cursor.classList.contains("anim")) { setTimeout(() => { cursor.classList.remove("anim"); }, 400); }
                 centerchanger = null;
             }
     
@@ -448,15 +445,15 @@ function loop() {
     });
 
     if (screen.width > 1000) {
-        cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
-        cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
-
         tenqueue([lerp(oldmousex, mouseX, lerpf),lerp(oldmousey, mouseY, lerpf)]);
 
         let td = tdequeue();
 
         oldmousex = td[0];
         oldmousey = td[1];
+
+        cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
+        cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
         
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
