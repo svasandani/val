@@ -62,8 +62,13 @@ p {
     padding-top: 5px;
 }
 
+a.no-hover:hover {
+    cursor: default;
+}
+
 #app {
     user-select: none;
+    transition: transform 0.2s ease-out;
 }
 
 .cursor {
@@ -92,10 +97,6 @@ p {
     margin-top: -80px;
     transition: 0.2s ease-out;
     transition-property: width, height, margin-left, margin-top;
-}
-
-.cursor.anim {
-    transition-property: width, height, margin-left, margin-top, left, top;
 }
 
 .cursor-dot {
@@ -206,11 +207,11 @@ nav a::after {
     transition: 0.4s ease-out;
 }
 
-nav a:hover {
+nav a:not(.no-hover):hover {
     cursor: pointer;
 }
 
-nav a:hover::after {
+nav a:not(.no-hover):hover::after {
     left: 0px;
     width: 100%;
     transition: 0.4s ease-out;
@@ -285,13 +286,13 @@ section {
 }
 
 .slide-up *.unslided {
-    transform: translateY(1em);
-    transition: 0.8s ease-out;
+    transform: translateY(1.1em);
+    transition: transform 0.8s ease-out;
 }
 
 .slide-up *.slided {
     transform: none;
-    transition: 0.8s ease-out;
+    transition: transform 0.8s ease-out;
 }
 
 /* PRELOADER */
@@ -374,8 +375,6 @@ body.loaded {
 
 /* INDEX */
 
-
-
 #landing {
     position: relative;
     overflow: hidden;
@@ -392,6 +391,7 @@ body.loaded {
     object-fit: cover;
     stroke: var(--text-color);
     pointer-events: none;
+    transition: transform 0.2s ease-out;
 }
 
 .landing-h1 {
@@ -409,17 +409,18 @@ body.loaded {
 }
 
 .artist-statement {
+    font-size: calc(0.95vmin + 0.55vmax);
     position: absolute;
-    right: 5vw;
+    right: 75px;
     bottom: 10vh;
-    width: 42%;
+    width: 30vw;
 }
 
 .scroll-btn-container {
     padding: 0 35px;
     display: block;
     position: absolute;
-    bottom: 15vh;
+    bottom: 10vh;
     left: 15vw;
     height: 10vh;
     width: 71px;
@@ -427,14 +428,18 @@ body.loaded {
 }
 
 .scroll-btn-container.unslided {
-    bottom: 18vh;
+    bottom: 13vh;
     opacity: 0;
 }
 
 .scroll-btn-container.slided {
-    bottom: 15vh;
+    bottom: 10vh;
     opacity: 1;
     transition: 0.8s ease-out;
+}
+
+.scroll-btn-container:not(.no-hover):hover {
+    cursor: pointer;
 }
 
 .scroll-btn {
@@ -507,18 +512,18 @@ body.loaded {
     transition: 0.8s ease-out;
 }
 
-.work-card:hover {
+.work-card:not(.no-hover):hover {
     cursor: pointer;
     /* padding: 75px; */
     transition: 1s ease-out;
 }
 
-.work-card:hover::after {
+.work-card:not(.no-hover):hover::after {
     width: 0%;
     transition: 0.8s ease-out;
 }
 
-.work-card:hover .work-description {
+.work-card:not(.no-hover):hover .work-description {
     left: 0px;
     bottom: 0px;
     opacity: 0;
@@ -574,13 +579,13 @@ body.loaded {
     }
 
     .artist-statement {
+        font-size: 1.1rem;
         position: relative;
         right: auto;
         bottom: auto;
         margin-left: 0px;
         width: 100%;
         margin-top: 10vh;
-        font-size: 1.2em;
     }
 
     .scroll-btn {
@@ -588,13 +593,13 @@ body.loaded {
     }
     
     .slide-up p.unslided {
-        transform: translateY(2em);
-        transition: 0.8s ease-out;
+        transform: translateY(1.2em);
+        transition: transform 0.8s ease-out;
     }
     
     .slide-up p.slided {
         transform: none;
-        transition: 0.8s ease-out;
+        transition: transform 0.8s ease-out;
     }
 }
 
@@ -605,6 +610,11 @@ body.loaded {
     border: 1px solid var(--text-color);
     overflow: hidden;
     position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    min-height: calc(100vh - 50px);
 }
 
 #contact.show {
@@ -639,8 +649,19 @@ label {
 }
 
 .form-container {
-    float: right;
-    width: 50%;
+    margin-top: 11vh;
+    width: 100%;
+}
+
+.form-container *.unslided {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+.form-container *.slided {
+    transform: translateX(0px);
+    opacity: 1;
+    transition: 0.8s ease-out;
 }
 
 input, textarea {
@@ -684,7 +705,7 @@ button {
     font-family: "Lexend";
 }
 
-button:hover {
+button:not(.no-hover):hover {
     background: var(--text-color);
     color: var(--theme-color);
     cursor: pointer;
@@ -697,10 +718,11 @@ button:hover {
 
     #contact {
         transition: 0.3s ease-out;
+        grid-template-columns: 1fr;
     }
 
     .form-container {
-        float: none;
+        margin-top: 0;
     }
     
     input, textarea, button {

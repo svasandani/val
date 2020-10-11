@@ -1,6 +1,9 @@
 let currentpath = window.location.pathname;
+let currentdata = null;
 
 let app = document.getElementById("app");
+
+let scribble = document.querySelector(".scribble");
 
 let parser = new DOMParser();
 
@@ -20,9 +23,17 @@ let dotY = 0;
 let oldscrollamt = 0;
 let scrollamt = 0;
 let scrollt = 0;
-const lerpf = 0.25;
+let target = 0;
+let ticks = Array(1).fill([0,0]);
+let ticksptr = 0;
+let tlast = () => { return ticksptr == 0 ? (ticks.length - 1) : ticksptr - 1; }
+let tenqueue = (toenqueue) => { ticks[tlast()] = toenqueue; }
+let tdequeue = () => { let t = ticksptr; ticksptr = (ticksptr == (ticks.length - 1) ? 0 : ticksptr + 1); return ticks[t]; }
+let wheeling = false;
+const lerpf = 0.15;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
+let resizetext = null;
 
 window.addEventListener('mousemove', (e) => {
     dotX = e.clientX;
@@ -35,12 +46,14 @@ window.addEventListener('mousemove', (e) => {
       mouseY = centerchanger.getBoundingClientRect().top + (centerchanger.clientHeight / 2);
     }
 
-    if (scrollt > 0) {
+    if (scrollt != 0) {
         scrollamt = oldscrollamt + ((e.clientY - scrollt) * 1.2);
     }
 });
 
 window.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains("no-scroll")) return;
+    wheeling = false;
     if (screen.width > 1000) scrollt = e.clientY;
 });
 
@@ -52,14 +65,16 @@ window.addEventListener('mouseup', () => {
 });
 
 window.addEventListener('wheel', (e) => {
-    e.preventDefault();
+    // if ((target + event.deltaY * -0.3 > 0 && event.deltaY * -1 > 0) || (target - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -1 < 0)) return;
 
-    if ((scrollamt + event.deltaY * -0.3 > 0 && event.deltaY * -0.3 > 0) || (scrollamt - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -0.3 < 0)) return;
+    if ((scrollamt > -10 && scrollamt + event.deltaY * -1 > 10) || (scrollamt < (window.innerHeight - app.offsetHeight + 5) && scrollamt + event.deltaY * -1 < (window.innerHeight - app.offsetHeight - 15))) {
+        wheeling = false;
+        return;
+    }
 
-    scrollamt += event.deltaY * -0.3;
-    oldscrollamt += event.deltaY * -0.3;
-    if (scrollamt > 0) falltozero(1);
-    if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+    if (wheeling) target += event.deltaY * -0.7;
+    else target = scrollamt + event.deltaY * -0.7;
+    wheeling = true;
 });
 
 let navlinks = document.querySelectorAll("nav a");
@@ -81,55 +96,154 @@ pageData = {
         "title": "Valeria Sofia",
         "path": "/",
         "markup": "index",
-        "customMarkupFunction": () => {
-            // rearrange intro
+        "customOnload": () => {
+            resizetext = () => {
+                const getNewDiv = () => {
+                    let slice = document.createElement("div");
+                    slice.classList.add("slide-up");
+
+                    let p = document.createElement("p");
+                    if (document.querySelector("h1").classList.contains("unslided")) { p.classList.add("unslided"); }
+                    else p.classList.add("slided");
+
+                    slice.appendChild(p);
+
+                    return { "div": slice, "p": p };
+                };
+
+                let statement = document.querySelector(".artist-statement");
+                statement.style.letterSpacing = (screen.width > 1000 ? "0.15em" : "0.12em");
+                let text = statement.dataset.text;
+
+                statement.innerHTML = "";
+
+                let activeline = getNewDiv();
+                activeline.p.innerHTML = text.charAt(0);
+                
+                for(let i = 1; i < text.length; i++) {
+                    statement.appendChild(activeline.div);
+                    let height = statement.offsetHeight;
+                    activeline.p.innerHTML += text.charAt(i);
+                    if (statement.offsetHeight > height) {
+                        activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
+                        activeline = getNewDiv();
+                        activeline.p.innerHTML = text.charAt(i);
+                    } else {
+                        statement.removeChild(activeline.div);
+                    }
+                }
+                statement.appendChild(activeline.div);
+                statement.style.letterSpacing = "0em";
+            }
+
+            resizetext();
+
+            window.addEventListener('resize', resizetext);
+
             let scrollbtn = document.querySelector(".scroll-btn-container");
 
             scrollbtn.addEventListener('click', (e) => {
                 e.preventDefault();
 
                 falltosetamt(25 - window.innerHeight, 1);
-            })
+            });
         },
+        "customOffload": () => {
+            window.removeEventListener('resize', resizetext);
+        }
     },
     "work": {
         "title": "Work — Valeria Sofia",
         "path": "/work",
         "markup": "work",
-        "customMarkupFunction": () => {
+        "customOnload": () => {
             console.log("hi");
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     },
     "contact": {
         "title": "Contact — Valeria Sofia",
         "path": "/contact",
         "markup": "contact",
-        "customMarkupFunction": () => {
+        "customOnload": () => {
             console.log("hi");
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     },
     "unknown": {
         "title": "404 — Valeria Sofia",
         "path": "/404",
         "markup": "404",
-        "customMarkupFunction": () => {
-            console.log("hi");
+        "customOnload": () => {
+            resizetext = () => {
+                const getNewDiv = () => {
+                    let slice = document.createElement("div");
+                    slice.classList.add("slide-up");
+
+                    let p = document.createElement("p");
+                    if (document.querySelector("h1").classList.contains("unslided")) { p.classList.add("unslided"); }
+                    else p.classList.add("slided");
+
+                    slice.appendChild(p);
+
+                    return { "div": slice, "p": p };
+                };
+
+                let statement = document.querySelector(".artist-statement");
+                statement.style.letterSpacing = (screen.width > 1000 ? "0.15em" : "0.12em");
+                let text = statement.dataset.text;
+
+                statement.innerHTML = "";
+
+                let activeline = getNewDiv();
+                activeline.p.innerHTML = text.charAt(0);
+                
+                for(let i = 1; i < text.length; i++) {
+                    statement.appendChild(activeline.div);
+                    let height = statement.offsetHeight;
+                    activeline.p.innerHTML += text.charAt(i);
+                    if (statement.offsetHeight > height) {
+                        activeline.p.innerHTML = activeline.p.innerHTML.slice(0, -1);
+                        activeline = getNewDiv();
+                        activeline.p.innerHTML = text.charAt(i);
+                    } else {
+                        statement.removeChild(activeline.div);
+                    }
+                }
+                statement.appendChild(activeline.div);
+                statement.style.letterSpacing = "0em";
+            }
+
+            resizetext();
+
+            window.addEventListener('resize', resizetext);
         },
+        "customOffload": () => {
+            console.log("bye");
+        }
     }
 }
 
 loadPage(currentpath);
 
 function loadPage(path) {
+    if (currentdata != null) currentdata.customOffload();
+
     if (path == "/") {
+        currentdata = pageData.index;
         doLoad(pageData.index);
     } else if (path == "/work") {
+        currentdata = pageData.work;
         doLoad(pageData.work);
     } else if (path == "/contact") {
+        currentdata = pageData.contact;
         doLoad(pageData.contact);
-    } else if (path == "/test.html") {
-        doLoad(pageData.test);
     } else {
+        currentdata = pageData.unknown;
         doLoad(pageData.unknown);
     }
 
@@ -151,7 +265,7 @@ function doLoad(data) {
         .then(() => {
             document.title = data.title;
 
-            data.customMarkupFunction();
+            data.customOnload();
 
             doPreload();
 
@@ -169,6 +283,7 @@ function doHide() {
 function doPreload() {
     scrollamt = 0;
     oldscrollamt = 0;
+    if (screen.width < 1000) scrollTo(0,0);
 
     let toSlide = document.querySelectorAll(".unslided");
 
@@ -188,22 +303,29 @@ function doPreload() {
             t.classList.remove("unslided"); t.classList.add("slided"); 
         }, 600);
     });
+
+    scribble = document.querySelector(".scribble");
 }
 
 function doAnims() {
     let changer = document.querySelectorAll(".changer");
     
     changer.forEach((c) => {
-        c.addEventListener("mouseover", () => {
-            if (c.classList.contains("center-changer")) {
+        c.addEventListener("mouseover", (e) => {
+            if (c.classList.contains("center-changer") && scrollt == 0) {
+                // cursor.classList.add("anim");
                 centerchanger = c;
             }
     
-            cursor.classList.add("changed");
+            if (scrollt == 0) {
+                cursor.classList.add("changed");
+                if (c.classList.contains("no-hover")) { c.classList.remove("no-hover"); }
+            } else c.classList.add("no-hover");
         })
         
         c.addEventListener("mouseout", () => {
             if (c.classList.contains("center-changer")) {
+                // if (cursor.classList.contains("anim")) { setTimeout(() => { cursor.classList.remove("anim"); }, 400); }
                 centerchanger = null;
             }
     
@@ -223,7 +345,7 @@ function doAnims() {
     toLoad.forEach((t) => {
         t.addEventListener('load', () => { show(t); })
 
-        setTimeout(() => { show(t); }, 2000);
+        setTimeout(() => { show(t); }, 3000);
     });
 
     loop();
@@ -290,7 +412,6 @@ function falltosetamtfrombelow(amt, level) {
             } else {
                 setTimeout(() => { falltosetamtfrombelow(amt, level + 1); }, (30 / level));
             }
-            
         }
     }
 }
@@ -310,7 +431,6 @@ function falltosetamtfromabove(amt, level) {
             } else {
                 setTimeout(() => { falltosetamtfromabove(amt, level + 1); }, (30 / level));
             }
-            
         }
     }
 }
@@ -325,16 +445,35 @@ function loop() {
     });
 
     if (screen.width > 1000) {
+        tenqueue([lerp(oldmousex, mouseX, lerpf),lerp(oldmousey, mouseY, lerpf)]);
+
+        let td = tdequeue();
+
+        oldmousex = td[0];
+        oldmousey = td[1];
+
         cursor.style.left = lerp(oldmousex, mouseX, lerpf) + "px";
         cursor.style.top = lerp(oldmousey, mouseY, lerpf) + "px";
-        oldmousex = lerp(oldmousex, mouseX, lerpf);
-        oldmousey = lerp(oldmousey, mouseY, lerpf);
         
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
-    }
+        
+        app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px) scale(" + (scrollt == 0 ? "1" : "0.9") + ")";
+        scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
 
-    app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px)";
+        if (wheeling) {
+            if (Math.abs(scrollamt - target) < 50 && (scrollamt > 0 || scrollamt < (window.innerHeight - app.offsetHeight - 25))) wheeling = false;
+            else {
+                scrollamt = lerp(scrollamt, target, 0.6);
+                oldscrollamt = scrollamt;
+            }
+        } else {
+            if (!(scrollamt > 0 && scrollamt < (window.innerHeight - app.offsetHeight))) {
+                if (scrollamt > 0) falltozero(1);
+                if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
+            }
+        }
+    }
 
     scroll(loop);
 }
