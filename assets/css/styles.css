@@ -630,15 +630,11 @@ body.loaded {
 }
 
 #contact .ending {
-    position: absolute;
-    top: calc(50px + 3.6rem);
     transition: 0.4s ease-out;
     opacity: 0;
 }
 
 #contact .ending.finished {
-    position: absolute;
-    top: calc(50px + 3.6rem);
     transition: 0.4s ease-out;
     opacity: 1;
 }

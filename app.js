@@ -168,7 +168,27 @@ pageData = {
         "path": "/contact",
         "markup": "contact",
         "customOnload": () => {
-            console.log("hi");
+            let form = document.querySelector("form");
+
+            let fd = new FormData();
+
+            let ending = contact.querySelector(".ending");
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                fd.append("email", form.querySelector("#email").value);
+                fd.append("msg", form.querySelector("#msg").value);
+
+                fetch('https://script.google.com/macros/s/AKfycbz6tMsCM6sBDRqmXmzOcNKn_smhZR-CcN1F323xn36ISDJ8OWgL/exec', {
+                    method: 'POST',
+                    body: fd,
+                })
+
+                form.style.opacity = 0;
+
+                setTimeout(() => { ending.classList.add("finished"); }, 600);
+            })
         },
         "customOffload": () => {
             console.log("bye");
