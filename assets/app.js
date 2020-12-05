@@ -87,7 +87,7 @@ navlinks.forEach((nl) => {
         
         doHide();
 
-        setTimeout(() => { loadPage(nl.pathname); }, 400);
+        setTimeout(() => { loadPage(nl.pathname, true); }, 400);
     });
 });
 
@@ -248,30 +248,30 @@ pageData = {
     }
 }
 
-loadPage(currentpath);
+loadPage(currentpath, true);
 
-function loadPage(path) {
+function loadPage(path, pushState) {
     if (currentdata != null) currentdata.customOffload();
 
     if (path == "/") {
         currentdata = pageData.index;
-        doLoad(pageData.index);
+        doLoad(pageData.index, pushState);
     } else if (path == "/work") {
         currentdata = pageData.work;
-        doLoad(pageData.work);
+        doLoad(pageData.work, pushState);
     } else if (path == "/contact") {
         currentdata = pageData.contact;
-        doLoad(pageData.contact);
+        doLoad(pageData.contact, pushState);
     } else {
         currentdata = pageData.unknown;
-        doLoad(pageData.unknown);
+        doLoad(pageData.unknown, pushState);
     }
 
     currentpath = path;
 }
 
-function doLoad(data) {
-    history.pushState({ "path": data.path }, null, data.path);
+function doLoad(data, pushState) {
+    if (pushState) history.pushState({ "path": data.path }, null, data.path);
 
     let markupurl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") + "/assets/markup/" + data.markup;
 
@@ -500,7 +500,7 @@ function loop() {
 
 window.onpopstate = function (event) {
     if(event.state) {
-        loadPage(event.state.path);
+        loadPage(event.state.path, false);
     }
 }
 
