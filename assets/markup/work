@@ -12,68 +12,227 @@
 </section>
 <div class="spacer" id="recent"></div>
 <section class="recent unslided">
-    <div class="slide-up"><h2 class="unchanged">RECENT WORK</h2></div>
+    <div class="slide-up"><h2 class="unchanged">SCULPTURE</h2></div>
     <div class="work-carousel">
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/fall.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/sculpture/alientechnology.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>First day of fall</h3>
-                    <p>Digital. 2020.</p>
+                    <h3>Alien Technology</h3>
+                    <p>Ceramics. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/cartagena.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/sculpture/feet.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Cartagena.</h3>
-                    <p>Woodburn. 2020.</p>
+                    <h3>Feet</h3>
+                    <p>Ceramics. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/identity.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/sculpture/horse.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Identity</h3>
-                    <p>Pastel, ink, colored pencil on newsprint. 2020.</p>
+                    <h3>Horse</h3>
+                    <p>Metal. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/watch.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/sculpture/organicwinecork.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Watch</h3>
-                    <p>Silkscreen print. 2020.</p>
+                    <h3>Organic Wine Cork</h3>
+                    <p>Ceramics. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/untitled1.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/sculpture/pumpkin.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Untitled #1</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <h3>Pumpkin</h3>
+                    <p>Ceramics. 2020.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="recent unslided">
+    <div class="slide-up"><h2 class="unchanged">DIGITAL</h2></div>
+    <div class="work-carousel">
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/digital/famouscollage.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Famous Collage</h3>
+                    <p>Photoshop. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/untitled2.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/digital/moon.gif" class="unloaded" />
                 <div class="work-description">
-                    <h3>Untitled #2</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <h3>Moon</h3>
+                    <p>Procreate. 2020.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card changer unchanged">
-                <img src="img/pumpkinbowl.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/digital/prescriptions.png" class="unloaded" />
                 <div class="work-description">
-                    <h3>Pumpkin bowl</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <h3>Prescriptions</h3>
+                    <p>Illustrator, Blender. 2020.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="recent unslided">
+    <div class="slide-up"><h2 class="unchanged">2D</h2></div>
+    <div class="work-carousel">
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/blueprint of a broken home.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Blueprint of a broken home</h3>
+                    <p>Tarp, Chalk. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/cameliascreaming.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Camelia Screaming</h3>
+                    <p>Charcoal. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/cave.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Cave</h3>
+                    <p>Watercolor. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/dolor por la patria.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Dolor por la patria</h3>
+                    <p>Ink, chalk. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/flames.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Flames</h3>
+                    <p>Ink, acrylic. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/fruitinbox.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Fruit in box</h3>
+                    <p>Oil. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/fruitonthestair.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Fruit on the stair</h3>
+                    <p>Oil. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/hands.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Hands</h3>
+                    <p>Oil. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/uma.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Uma</h3>
+                    <p>Ink. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/2d/watch finished.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Watch finished</h3>
+                    <p>Ink. 2020.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="recent unslided">
+    <div class="slide-up"><h2 class="unchanged">MIXED MEDIA</h2></div>
+    <div class="work-carousel">
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/mixedmedia/bullhill.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Bull Hill</h3>
+                    <p>Procreate, graphite. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/mixedmedia/colony erased.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Colony erased</h3>
+                    <p>Graphite, cardboard, glue. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/mixedmedia/nectarine.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Nectarine</h3>
+                    <p>Styrofoam, mylar, acrylic, Photoshop. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/mixedmedia/no olvidamos.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>No olvidamos</h3>
+                    <p>Tarp, ink, graphite, chalk. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show">
+                <img src="assets/img/mixedmedia/vaporwave.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Vaporwave</h3>
+                    <p>Photoshop, construction paper. 2020.</p>
                 </div>
             </div>
         </div>

@@ -17,3 +17,75 @@
     src: url(choplin.ttf);
     font-display: swap;
 }
+
+/* ----------------------------------------------
+Chivo variable font. Usage:
+
+@supports (font-variation-settings: normal) {
+	html { font-family: 'Inter var', sans-serif; }
+}
+---------------------------------------------- */
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 100; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(chivo/Chivo-Light.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 100; /* stylelint-disable-line font-weight-notation */
+	font-style: italic;
+	font-display: swap;
+	src: url(chivo/Chivo-LightItalic.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 300; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(chivo/Chivo-Regular.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 300; /* stylelint-disable-line font-weight-notation */
+	font-style: italic;
+	font-display: swap;
+	src: url(chivo/Chivo-Italic.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: bold; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(chivo/Chivo-Bold.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: bold; /* stylelint-disable-line font-weight-notation */
+	font-style: italic;
+	font-display: swap;
+	src: url(chivo/Chivo-BoldItalic.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 900; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(chivo/Chivo-Black.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Chivo";
+	font-weight: 900; /* stylelint-disable-line font-weight-notation */
+	font-style: italic;
+	font-display: swap;
+	src: url(chivo/Chivo-BlackItalic.ttf) format("ttf");
+}

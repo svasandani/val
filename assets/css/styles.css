@@ -17,27 +17,35 @@
 html {
     color: var(--text-color);
     /* font-family: "Epilogue", sans-serif; */
-    font-family: "Nexa";
+    /* font-family: "Nexa"; */
+    font-family: 'Chivo';
     scroll-behavior: smooth;
 }
 
 em {
-    font-family: "SMG Italic";
+    /* font-family: "SMG Italic"; */
+    font-family: 'Chivo';
+    font-style: italic;
 }
 
 h1 {
-    font-family: "Lexend";
+    /* font-family: "Lexend"; */
+    font-family: 'Chivo';
+    font-weight: 900;
     font-size: 14vw;
-    letter-spacing: -3vw;
+    /* letter-spacing: -3vw; */
+    letter-spacing: -0.5vw;
     line-height: 0.85em;
-    margin-left: -15px;
+    /* margin-left: -15px; */
 }
 
 h2 {
-    font-family: "Lexend";
-    font-weight: bold;
+    /* font-family: "Lexend"; */
+    font-family: 'Chivo';
+    font-weight: 900;
     font-size: 3.6em;
-    letter-spacing: -0.6rem;
+    /* letter-spacing: -0.6rem; */
+    letter-spacing: -0.2rem;
 }
 
 h2.unchanged {
@@ -51,7 +59,9 @@ h2.changed {
 }
 
 h3 {
-    font-family: "Choplin";
+    /* font-family: "Choplin"; */
+    font-family: 'Chivo';
+    font-weight: 500;
     font-style: italic;
     font-size: 2.8em;
     font-weight: 100;
@@ -133,14 +143,14 @@ img.loaded {
 @media (max-width: 1000px) {
     h1 {
         font-size: 15vw;
-        letter-spacing: -3vw;
+        /* letter-spacing: -3vw; */
         line-height: 0.9em;
         word-break: break-all;
     }
 
     h2 {
         font-size: 2.9em;
-        letter-spacing: -0.4rem;
+        /* letter-spacing: -0.4rem; */
     }
 
     p {
@@ -186,7 +196,9 @@ nav div {
 nav a {
     font-size: 1.4em;
     text-decoration: none;
-    font-family: "Lexend";
+    /* font-family: "Lexend"; */
+    font-family: 'Chivo';
+    font-weight: 900;
     color: var(--theme-color);
     position: relative;
     background: #00000000;
@@ -479,6 +491,14 @@ body.loaded {
     margin-top: 25px;
 }
 
+.carousel-column {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .work-card.unchanged {
     transform: translateX(-100%);
 }
@@ -512,18 +532,22 @@ body.loaded {
     transition: 0.8s ease-out;
 }
 
-.work-card:not(.no-hover):hover {
-    cursor: pointer;
+.work-card.show::after {
+    opacity: 0;
+}
+
+.work-card:not(.no-hover):not(.portfolio-card):hover {
+    /* cursor: pointer; */
     /* padding: 75px; */
     transition: 1s ease-out;
 }
 
-.work-card:not(.no-hover):hover::after {
+.work-card:not(.no-hover):not(.portfolio-card):hover::after {
     width: 0%;
     transition: 0.8s ease-out;
 }
 
-.work-card:not(.no-hover):hover .work-description {
+.work-card:not(.no-hover):not(.portfolio-card):hover .work-description {
     left: 0px;
     bottom: 0px;
     opacity: 0;
@@ -544,6 +568,21 @@ body.loaded {
 
 .work-description h3 {
     margin-bottom: 0.8rem;
+}
+
+.work-card.portfolio-card {
+    display: grid;
+    grid-template-rows: auto auto;
+    height: auto;
+}
+
+.work-card.portfolio-card img {
+    height: auto;
+}
+
+.work-card.portfolio-card .work-description {
+    position: relative;
+    color: var(--text-color);
 }
 
 @media (max-width: 1000px) {
@@ -573,7 +612,7 @@ body.loaded {
         width: 0px;
     }
 
-    .work-description {
+    .work-card:not(.portfolio-card) .work-description {
         background: var(--text-color);
         opacity: 0.8;
     }
@@ -640,7 +679,8 @@ body.loaded {
 }
 
 label {
-    font-family: "Choplin";
+    /* font-family: "Choplin"; */
+    font-family: 'Chivo';
     font-size: 1.3em;
 }
 
@@ -666,12 +706,13 @@ input, textarea {
     border: none;
     color: var(--text-color);
     font-size: 2em;
-    font-family: 'Lexend';
+    /* font-family: 'Lexend'; */
+    font-family: 'Chivo';
     width: 100%;
     margin-bottom: 50px;
     margin-top: 25px;
     height: 2em;
-    letter-spacing: -0.2em;
+    /* letter-spacing: -0.2em; */
     border-bottom: 1px solid var(--text-color);
 }
 
@@ -698,7 +739,8 @@ button {
     transition: 0.4s ease-out;
     /* font-family: "Epilogue"; */
     /* font-family: "Nexa"; */
-    font-family: "Lexend";
+    /* font-family: "Lexend"; */
+    font-family: 'Chivo';
 }
 
 button:not(.no-hover):hover {

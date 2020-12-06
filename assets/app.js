@@ -34,6 +34,8 @@ const lerpf = 0.15;
 let preloader = document.querySelector(".preloader");
 let centerchanger = null;
 let resizetext = null;
+let resizegroups = null;
+let oldcolumnamt = [];
 
 window.addEventListener('mousemove', (e) => {
     dotX = e.clientX;
@@ -90,6 +92,55 @@ navlinks.forEach((nl) => {
         setTimeout(() => { loadPage(nl.pathname, true); }, 400);
     });
 });
+
+resizegroups = () => {
+    let groups = document.querySelectorAll(".work-carousel");
+
+    groups.forEach((group, index) => {
+        if (screen.innerWidth < 1000) {
+            // do mobile
+        } else {
+            let amount = Math.floor((group.clientWidth + 25) / 375); // get number of columns (taking gap into account)
+
+            if (amount == oldcolumnamt[index]) return;
+            else oldcolumnamt[index] = amount;
+
+            let nodes = group.querySelectorAll(".portfolio-card");
+
+            while(group.firstChild) group.removeChild(group.lastChild); // empty carousel
+
+            let columns = [];
+            let heights = [];
+
+            for (let i = 0; i < amount; i++) {
+                let div = document.createElement("div");
+                div.classList.add("carousel-column");
+                group.appendChild(div);
+                columns.push(div);
+                heights.push(0);
+            }
+
+            nodes.forEach((node) => {
+                console.log(index);
+
+                let min = 0;
+                let mindex = Number.NEGATIVE_INFINITY;
+                for (let i = 0; i < heights.length; i++) {
+                    if (heights[i] <= heights[min]) {
+                        min = i;
+                        mindex = heights[i];
+                    }
+                }
+
+                if (index == 2) console.log({...heights});
+
+                columns[min].appendChild(node);
+                
+                heights[min] += node.clientHeight;
+            });
+        }
+    });
+}
 
 resizetext = () => {
     const getNewDiv = () => {
@@ -157,10 +208,12 @@ pageData = {
         "path": "/work",
         "markup": "work",
         "customOnload": () => {
-            console.log("hi");
+            resizegroups();
+            
+            window.addEventListener('resize', resizegroups);
         },
         "customOffload": () => {
-            console.log("bye");
+            window.removeEventListener('resize', resizegroups);
         }
     },
     "contact": {
@@ -205,6 +258,7 @@ pageData = {
         },
         "customOffload": () => {
             console.log("Hope you found a nice page!");
+            window.removeEventListener('resize', resizetext);
         }
     }
 }
@@ -265,6 +319,7 @@ function doPreload() {
     scrollamt = 0;
     oldscrollamt = 0;
     if (screen.width < 1000) scrollTo(0,0);
+    window.scrollTo(0,0);
 
     let toSlide = document.querySelectorAll(".unslided");
 
