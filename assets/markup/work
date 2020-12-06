@@ -61,6 +61,7 @@
         </div>
     </div>
 </section>
+<div class="spacer" id="recent"></div>
 <section class="recent unslided">
     <div class="slide-up"><h2 class="unchanged">DIGITAL</h2></div>
     <div class="work-carousel">
@@ -93,6 +94,7 @@
         </div>
     </div>
 </section>
+<div class="spacer" id="recent"></div>
 <section class="recent unslided">
     <div class="slide-up"><h2 class="unchanged">2D</h2></div>
     <div class="work-carousel">
@@ -188,6 +190,7 @@
         </div>
     </div>
 </section>
+<div class="spacer" id="recent"></div>
 <section class="recent unslided">
     <div class="slide-up"><h2 class="unchanged">MIXED MEDIA</h2></div>
     <div class="work-carousel">
