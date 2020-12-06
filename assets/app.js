@@ -94,51 +94,46 @@ navlinks.forEach((nl) => {
 });
 
 resizegroups = () => {
+    if (screen.width < 1000) return;
+
     let groups = document.querySelectorAll(".work-carousel");
 
     groups.forEach((group, index) => {
-        if (screen.innerWidth < 1000) {
-            // do mobile
-        } else {
-            let amount = Math.floor((group.clientWidth + 25) / 375); // get number of columns (taking gap into account)
+        let amount = Math.floor((group.clientWidth + 25) / 375); // get number of columns (taking gap into account)
 
-            if (amount == oldcolumnamt[index]) return;
-            else oldcolumnamt[index] = amount;
+        if (amount == oldcolumnamt[index]) return;
+        else oldcolumnamt[index] = amount;
 
-            let nodes = group.querySelectorAll(".portfolio-card");
+        let nodes = group.querySelectorAll(".portfolio-card");
 
-            while(group.firstChild) group.removeChild(group.lastChild); // empty carousel
+        while(group.firstChild) group.removeChild(group.lastChild); // empty carousel
 
-            let columns = [];
-            let heights = [];
+        let columns = [];
+        let heights = [];
 
-            for (let i = 0; i < amount; i++) {
-                let div = document.createElement("div");
-                div.classList.add("carousel-column");
-                group.appendChild(div);
-                columns.push(div);
-                heights.push(0);
+        for (let i = 0; i < amount; i++) {
+            let div = document.createElement("div");
+            div.classList.add("carousel-column");
+            group.appendChild(div);
+            columns.push(div);
+            heights.push(0);
+        }
+
+        nodes.forEach((node) => {
+            let min = Number.POSITIVE_INFINITY;
+            let mindex = 0;
+
+            for (let i = 0; i < heights.length; i++) {
+                if (heights[i] < min) {
+                    mindex = i;
+                    min = heights[i];
+                }
             }
 
-            nodes.forEach((node) => {
-                console.log(index);
-
-                let min = 0;
-                let mindex = Number.NEGATIVE_INFINITY;
-                for (let i = 0; i < heights.length; i++) {
-                    if (heights[i] <= heights[min]) {
-                        min = i;
-                        mindex = heights[i];
-                    }
-                }
-
-                if (index == 2) console.log({...heights});
-
-                columns[min].appendChild(node);
-                
-                heights[min] += node.clientHeight;
-            });
-        }
+            columns[mindex].appendChild(node);
+            
+            heights[mindex] += node.offsetHeight + parseInt(node.dataset.imgheight);
+        });
     });
 }
 
@@ -319,7 +314,6 @@ function doPreload() {
     scrollamt = 0;
     oldscrollamt = 0;
     if (screen.width < 1000) scrollTo(0,0);
-    window.scrollTo(0,0);
 
     let toSlide = document.querySelectorAll(".unslided");
 
@@ -493,6 +487,8 @@ function loop() {
         
         cursordot.style.left = lerp(oldmousex, dotX, 0.95) + "px";
         cursordot.style.top = lerp(oldmousey, dotY, 0.95) + "px";
+
+        if (scrollamt == 0 && document.getElementById("app").getBoundingClientRect() != 0) window.scrollTo(0,0);
         
         app.style.transform = "translate3d(0px, " + scrollamt + "px, 0px) scale(" + (scrollt == 0 ? "1" : "0.9") + ")";
         scribble.style.transform = "translate3d(0px, " + (-1 * scrollamt) + "px, 0px)";
