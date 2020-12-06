@@ -206,6 +206,14 @@ pageData = {
             resizegroups();
             
             window.addEventListener('resize', resizegroups);
+
+            let scrollbtn = document.querySelector(".scroll-btn-container");
+
+            scrollbtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                falltosetamt(25 - window.innerHeight, 1);
+            });
         },
         "customOffload": () => {
             window.removeEventListener('resize', resizegroups);
