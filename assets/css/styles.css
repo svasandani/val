@@ -507,6 +507,15 @@ body.loaded {
     transform: none;
 }
 
+.work-card.portfolio-card.unchanged {
+    transform: translateY(15vh);
+}
+
+.work-card.portfolio-card.changed {
+    transform: none;
+    opacity: 1;
+}
+
 .work-card {
     width: 100%;
     height: 500px;
