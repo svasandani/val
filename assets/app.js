@@ -66,17 +66,23 @@ window.addEventListener('mouseup', () => {
     if (scrollamt < (window.innerHeight - app.offsetHeight - 25)) falltoheight(1);
 });
 
+const stopwheeling = () => { wheeling = false; }
+
 window.addEventListener('wheel', (e) => {
     // if ((target + event.deltaY * -0.3 > 0 && event.deltaY * -1 > 0) || (target - event.deltaY * -0.3 < (window.innerHeight - app.offsetHeight - 25) && event.deltaY * -1 < 0)) return;
+    clearTimeout(stopwheeling, 300);
 
-    if ((scrollamt > -10 && scrollamt + event.deltaY * -1 > 10) || (scrollamt < (window.innerHeight - app.offsetHeight + 5) && scrollamt + event.deltaY * -1 < (window.innerHeight - app.offsetHeight - 15))) {
+
+    if ((scrollamt > -10 && scrollamt + e.deltaY * -1 > 10) || (scrollamt < (window.innerHeight - app.offsetHeight + 5) && scrollamt + e.deltaY * -1 < (window.innerHeight - app.offsetHeight - 15))) {
         wheeling = false;
         return;
     }
 
-    if (wheeling) target += event.deltaY * -0.7;
-    else target = scrollamt + event.deltaY * -0.7;
+    if (wheeling) target += e.deltaY * -0.7;
+    else target = scrollamt + e.deltaY * -0.7;
     wheeling = true;
+
+    setTimeout(stopwheeling, 300);
 });
 
 let navlinks = document.querySelectorAll("nav a");
@@ -86,7 +92,8 @@ navlinks.forEach((nl) => {
         e.preventDefault();
 
         if (nl.pathname == currentpath) {
-            falltosetamt(0, 1);
+            wheeling = false;
+            falltosetamtfrombelowwhilecondition(0, 1, () => { return wheeling == false; });
             window.scrollTo(0, 0);
             return;
         };
@@ -458,6 +465,25 @@ function falltosetamtfrombelow(amt, level) {
     }
 }
 
+function falltosetamtfrombelowwhilecondition(amt, level, callback) {
+    if (scrollt != 0 || !callback()) return;
+
+    if (scrollamt <= amt) {
+        if (scrollamt + 8 > amt) {
+            scrollamt = amt;
+            oldscrollamt = amt;
+        } else {
+            scrollamt += 8;
+            oldscrollamt = scrollamt;
+            if (level == 30) {
+                setTimeout(() => { falltosetamtfrombelowwhilecondition(amt, level, callback); }, 1);
+            } else {
+                setTimeout(() => { falltosetamtfrombelowwhilecondition(amt, level + 1, callback); }, (30 / level));
+            }
+        }
+    }
+}
+
 function falltosetamtfromabove(amt, level) {
     if (scrollt != 0) return;
 
@@ -478,6 +504,12 @@ function falltosetamtfromabove(amt, level) {
 }
 
 function loop() {
+    /********** CONSOLE ************/
+
+    // console.log({wheeling, scrollamt});
+
+    /*******************************/
+
     toAnim.forEach((t, i) => {
         if (isElementInViewport(t)) {
             t.classList.remove("unchanged");
