@@ -85,7 +85,11 @@ navlinks.forEach((nl) => {
     nl.addEventListener('click', (e) => {
         e.preventDefault();
 
-        if (nl.pathname == currentpath) return;
+        if (nl.pathname == currentpath) {
+            falltosetamt(0, 1);
+            window.scrollTo(0, 0);
+            return;
+        };
         
         doHide();
 
