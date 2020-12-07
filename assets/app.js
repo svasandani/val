@@ -227,6 +227,7 @@ pageData = {
             });
         },
         "customOffload": () => {
+            oldcolumnamt.fill(0);
             window.removeEventListener('resize', resizegroups);
         }
     },
