@@ -364,10 +364,10 @@ body.loaded {
 
 .hider-scribble {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: calc(-50vh - 25px);
+    left: calc(-50vw - 24px);
+    width: calc(200vw - 100px);
+    height: calc(200vh - 100px);
     object-fit: cover;
     z-index: 999;
     stroke: var(--text-color);
@@ -396,10 +396,10 @@ body.loaded {
 
 .scribble {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: calc(-50vh - 25px);
+    left: calc(-50vw - 25px);
+    width: calc(200vw - 100px);
+    height: calc(200vh - 100px);
     object-fit: cover;
     stroke: var(--text-color);
     pointer-events: none;
