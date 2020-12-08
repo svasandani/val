@@ -27,65 +27,106 @@ Chivo variable font. Usage:
 ---------------------------------------------- */
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 100; /* stylelint-disable-line font-weight-notation */
-	font-style: normal;
-	font-display: swap;
-	src: url(chivo/Chivo-Light.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-Bold.eot');
+    src: url('chivo/Chivo-Bold.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-Bold.woff2') format('woff2'),
+        url('chivo/Chivo-Bold.woff') format('woff'),
+        url('chivo/Chivo-Bold.ttf') format('truetype'),
+        url('chivo/Chivo-Bold.svg#Chivo-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 100; /* stylelint-disable-line font-weight-notation */
-	font-style: italic;
-	font-display: swap;
-	src: url(chivo/Chivo-LightItalic.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-BlackItalic.eot');
+    src: url('chivo/Chivo-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-BlackItalic.woff2') format('woff2'),
+        url('chivo/Chivo-BlackItalic.woff') format('woff'),
+        url('chivo/Chivo-BlackItalic.ttf') format('truetype'),
+        url('chivo/Chivo-BlackItalic.svg#Chivo-BlackItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 300; /* stylelint-disable-line font-weight-notation */
-	font-style: normal;
-	font-display: swap;
-	src: url(chivo/Chivo-Regular.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-Black.eot');
+    src: url('chivo/Chivo-Black.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-Black.woff2') format('woff2'),
+        url('chivo/Chivo-Black.woff') format('woff'),
+        url('chivo/Chivo-Black.ttf') format('truetype'),
+        url('chivo/Chivo-Black.svg#Chivo-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 300; /* stylelint-disable-line font-weight-notation */
-	font-style: italic;
-	font-display: swap;
-	src: url(chivo/Chivo-Italic.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-Italic.eot');
+    src: url('chivo/Chivo-Italic.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-Italic.woff2') format('woff2'),
+        url('chivo/Chivo-Italic.woff') format('woff'),
+        url('chivo/Chivo-Italic.ttf') format('truetype'),
+        url('chivo/Chivo-Italic.svg#Chivo-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: bold; /* stylelint-disable-line font-weight-notation */
-	font-style: normal;
-	font-display: swap;
-	src: url(chivo/Chivo-Bold.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-BoldItalic.eot');
+    src: url('chivo/Chivo-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-BoldItalic.woff2') format('woff2'),
+        url('chivo/Chivo-BoldItalic.woff') format('woff'),
+        url('chivo/Chivo-BoldItalic.ttf') format('truetype'),
+        url('chivo/Chivo-BoldItalic.svg#Chivo-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: bold; /* stylelint-disable-line font-weight-notation */
-	font-style: italic;
-	font-display: swap;
-	src: url(chivo/Chivo-BoldItalic.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-Light.eot');
+    src: url('chivo/Chivo-Light.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-Light.woff2') format('woff2'),
+        url('chivo/Chivo-Light.woff') format('woff'),
+        url('chivo/Chivo-Light.ttf') format('truetype'),
+        url('chivo/Chivo-Light.svg#Chivo-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 900; /* stylelint-disable-line font-weight-notation */
-	font-style: normal;
-	font-display: swap;
-	src: url(chivo/Chivo-Black.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-LightItalic.eot');
+    src: url('chivo/Chivo-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-LightItalic.woff2') format('woff2'),
+        url('chivo/Chivo-LightItalic.woff') format('woff'),
+        url('chivo/Chivo-LightItalic.ttf') format('truetype'),
+        url('chivo/Chivo-LightItalic.svg#Chivo-LightItalic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: "Chivo";
-	font-weight: 900; /* stylelint-disable-line font-weight-notation */
-	font-style: italic;
-	font-display: swap;
-	src: url(chivo/Chivo-BlackItalic.ttf) format("ttf");
+    font-family: 'Chivo';
+    src: url('chivo/Chivo-Regular.eot');
+    src: url('chivo/Chivo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('chivo/Chivo-Regular.woff2') format('woff2'),
+        url('chivo/Chivo-Regular.woff') format('woff'),
+        url('chivo/Chivo-Regular.ttf') format('truetype'),
+        url('chivo/Chivo-Regular.svg#Chivo-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
+
