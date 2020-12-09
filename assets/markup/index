@@ -34,10 +34,10 @@
         </div>
         <div class="slide-up">
             <div class="work-card changer unchanged">
-                <img src="img/identity.jpg" class="unloaded" />
+                <img src="assets/img/2d/dolor por la patria.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Identity</h3>
-                    <p>Pastel, ink, colored pencil on newsprint. 2020.</p>
+                    <h3>Dolor por la patria</h3>
+                    <p>Ink, chalk. 2020.</p>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 <img src="img/untitled1.jpg" class="unloaded" />
                 <div class="work-description">
                     <h3>Untitled #1</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <p>Ceramics. 2019.</p>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 <img src="img/untitled2.jpg" class="unloaded" />
                 <div class="work-description">
                     <h3>Untitled #2</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <p>Ceramics. 2019.</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <img src="img/pumpkinbowl.jpg" class="unloaded" />
                 <div class="work-description">
                     <h3>Pumpkin bowl</h3>
-                    <p>Ceramics, glaze. 2019.</p>
+                    <p>Ceramics. 2019.</p>
                 </div>
             </div>
         </div>

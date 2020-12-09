@@ -15,20 +15,38 @@
     <div class="slide-up"><h2 class="unchanged">SCULPTURE</h2></div>
     <div class="work-carousel">
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
-                <img src="assets/img/sculpture/alientechnology.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="266">
+                <img src="assets/img/sculpture/feet.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Alien Technology</h3>
-                    <p>Ceramics. 2020.</p>
+                    <h3>Untitled #3</h3>
+                    <p>Ceramics. 2019.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="266">
-                <img src="assets/img/sculpture/feet.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
+                <img src="assets/img/sculpture/organicwinecork.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Feet</h3>
-                    <p>Ceramics. 2020.</p>
+                    <h3>Untitled #2</h3>
+                    <p>Ceramics. 2019.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
+                <img src="assets/img/sculpture/alientechnology.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Untitled #1</h3>
+                    <p>Ceramics. 2019.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
+                <img src="assets/img/sculpture/pumpkin.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Pumpkin bowl</h3>
+                    <p>Ceramics. 2019.</p>
                 </div>
             </div>
         </div>
@@ -37,25 +55,7 @@
                 <img src="assets/img/sculpture/horse.jpg" class="unloaded" />
                 <div class="work-description">
                     <h3>Horse</h3>
-                    <p>Metal. 2020.</p>
-                </div>
-            </div>
-        </div>
-        <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
-                <img src="assets/img/sculpture/organicwinecork.jpg" class="unloaded" />
-                <div class="work-description">
-                    <h3>Organic Wine Cork</h3>
-                    <p>Ceramics. 2020.</p>
-                </div>
-            </div>
-        </div>
-        <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="600">
-                <img src="assets/img/sculpture/pumpkin.jpg" class="unloaded" />
-                <div class="work-description">
-                    <h3>Pumpkin</h3>
-                    <p>Ceramics. 2020.</p>
+                    <p>Metal. 2018.</p>
                 </div>
             </div>
         </div>
@@ -66,11 +66,11 @@
     <div class="slide-up"><h2 class="unchanged">DIGITAL</h2></div>
     <div class="work-carousel">
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="522">
-                <img src="assets/img/digital/famouscollage.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="372">
+                <img src="assets/img/digital/prescriptions.png" class="unloaded" />
                 <div class="work-description">
-                    <h3>Famous Collage</h3>
-                    <p>Photoshop. 2020.</p>
+                    <h3>Warning</h3>
+                    <p>Illustrator, Blender. 2020.</p>
                 </div>
             </div>
         </div>
@@ -84,11 +84,11 @@
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="372">
-                <img src="assets/img/digital/prescriptions.png" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="522">
+                <img src="assets/img/digital/famouscollage.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Prescriptions</h3>
-                    <p>Illustrator, Blender. 2020.</p>
+                    <h3>Untitled #4</h3>
+                    <p>Photoshop. 2018.</p>
                 </div>
             </div>
         </div>
@@ -99,20 +99,11 @@
     <div class="slide-up"><h2 class="unchanged">2D</h2></div>
     <div class="work-carousel">
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="328">
-                <img src="assets/img/2d/blueprint of a broken home.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="531">
+                <img src="assets/img/2d/watch finished.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Blueprint of a broken home</h3>
-                    <p>Tarp, Chalk. 2020.</p>
-                </div>
-            </div>
-        </div>
-        <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="536">
-                <img src="assets/img/2d/cameliascreaming.jpg" class="unloaded" />
-                <div class="work-description">
-                    <h3>Camelia Screaming</h3>
-                    <p>Charcoal. 2020.</p>
+                    <h3>Watch</h3>
+                    <p>Silkscreen print. 2020.</p>
                 </div>
             </div>
         </div>
@@ -120,8 +111,17 @@
             <div class="work-card portfolio-card changer unchanged show" data-imgheight="270">
                 <img src="assets/img/2d/cave.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Cave</h3>
+                    <h3>Discovery</h3>
                     <p>Watercolor. 2020.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="328">
+                <img src="assets/img/2d/blueprint of a broken home.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Blueprint of a broken home</h3>
+                    <p>Tarp, Chalk. 2020.</p>
                 </div>
             </div>
         </div>
@@ -135,29 +135,29 @@
             </div>
         </div>
         <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="547">
+                <img src="assets/img/2d/uma.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Uma</h3>
+                    <p>Lino cut. 2019.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
             <div class="work-card portfolio-card changer unchanged show" data-imgheight="126">
                 <img src="assets/img/2d/flames.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Flames</h3>
-                    <p>Ink, acrylic. 2020.</p>
+                    <h3>2,795</h3>
+                    <p>Ink, acrylic. 2018.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="512">
-                <img src="assets/img/2d/fruitinbox.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="536">
+                <img src="assets/img/2d/cameliascreaming.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Fruit in box</h3>
-                    <p>Oil. 2020.</p>
-                </div>
-            </div>
-        </div>
-        <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="515">
-                <img src="assets/img/2d/fruitonthestair.jpg" class="unloaded" />
-                <div class="work-description">
-                    <h3>Fruit on the stair</h3>
-                    <p>Oil. 2020.</p>
+                    <h3>Bleecker St</h3>
+                    <p>Charcoal. 2018.</p>
                 </div>
             </div>
         </div>
@@ -165,26 +165,26 @@
             <div class="work-card portfolio-card changer unchanged show" data-imgheight="270">
                 <img src="assets/img/2d/hands.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Hands</h3>
-                    <p>Oil. 2020.</p>
+                    <h3>They look like a corpse</h3>
+                    <p>Oil. 2018.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="547">
-                <img src="assets/img/2d/uma.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="515">
+                <img src="assets/img/2d/fruitonthestair.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Uma</h3>
-                    <p>Ink. 2020.</p>
+                    <h3>Still life #2</h3>
+                    <p>Oil. 2018.</p>
                 </div>
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="531">
-                <img src="assets/img/2d/watch finished.jpg" class="unloaded" />
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="512">
+                <img src="assets/img/2d/fruitinbox.jpg" class="unloaded" />
                 <div class="work-description">
-                    <h3>Watch finished</h3>
-                    <p>Ink. 2020.</p>
+                    <h3>Still life #1</h3>
+                    <p>Oil. 2018.</p>
                 </div>
             </div>
         </div>
@@ -213,15 +213,6 @@
             </div>
         </div>
         <div class="slide-up">
-            <div class="work-card portfolio-card changer unchanged show" data-imgheight="398">
-                <img src="assets/img/mixedmedia/nectarine.jpg" class="unloaded" />
-                <div class="work-description">
-                    <h3>Nectarine</h3>
-                    <p>Styrofoam, mylar, acrylic, Photoshop. 2020.</p>
-                </div>
-            </div>
-        </div>
-        <div class="slide-up">
             <div class="work-card portfolio-card changer unchanged show" data-imgheight="426">
                 <img src="assets/img/mixedmedia/no olvidamos.jpg" class="unloaded" />
                 <div class="work-description">
@@ -231,11 +222,20 @@
             </div>
         </div>
         <div class="slide-up">
+            <div class="work-card portfolio-card changer unchanged show" data-imgheight="398">
+                <img src="assets/img/mixedmedia/nectarine.jpg" class="unloaded" />
+                <div class="work-description">
+                    <h3>Nectarine</h3>
+                    <p>Styrofoam, mylar, acrylic, Photoshop. 2019.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-up">
             <div class="work-card portfolio-card changer unchanged show" data-imgheight="529">
                 <img src="assets/img/mixedmedia/vaporwave.jpg" class="unloaded" />
                 <div class="work-description">
                     <h3>Vaporwave</h3>
-                    <p>Photoshop, construction paper. 2020.</p>
+                    <p>Photoshop, construction paper. 2018.</p>
                 </div>
             </div>
         </div>
